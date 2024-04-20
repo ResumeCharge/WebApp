@@ -10,7 +10,6 @@ import { getWorkExperience } from "../../../store/reducers/workExperienceSlice";
 import { Alert, Button } from "antd";
 import Header from "../../navigation/header/header";
 import "./previewPortfolio.scss";
-import { getUser } from "../../../store/reducers/userSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
 import { getResumeFromStore } from "../../../utilities/storeHelper";
@@ -31,6 +30,22 @@ import {
   quotePlugin,
   thematicBreakPlugin,
 } from "@mdxeditor/editor";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import Dialog from "@mui/material/Dialog";
+import { TransitionProps } from "@mui/material/transitions";
+import Slide from "@mui/material/Slide";
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const PreviewPortfolio = () => {
   const VIEW_PARAM = "mode";
@@ -44,10 +59,10 @@ const PreviewPortfolio = () => {
   const educationList = useAppSelector(getEducation);
   const projectsList = useAppSelector(getProjects);
   const skills = useAppSelector(getSkills);
-  const user = useAppSelector(getUser);
   const resumeDetails = useAppSelector(getResumeDetails);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [hasMissingResumeError, setHasMissingResumeError] = useState(false);
   const [isSignUpSignInActive, setIsSignUpSignInActive] = useState(false);
   const [showSignUpOverlay, setShowSignUpOverlay] = useState(false);
   const [showSignInOverlay, setShowSignInOverlay] = useState(false);
@@ -56,6 +71,16 @@ const PreviewPortfolio = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
+  useEffect(() => {
+    if (
+      !resumeDetails._id ||
+      !resumeDetails.nickname ||
+      !resumeDetails.completed
+    ) {
+      setHasMissingResumeError(true);
+    }
+  }, []);
+
   const OnClickOutside = () => {
     useEffect(() => {
       const handleClickOutside = (event: any) => {
@@ -162,6 +187,10 @@ const PreviewPortfolio = () => {
     );
   };
 
+  const handleErrorDialogClose = () => {
+    navigate("/account");
+  };
+
   const getActionButtons = () => {
     const returnButtonText = "Back";
     return (
@@ -214,6 +243,26 @@ const PreviewPortfolio = () => {
         style={isSignUpSignInActive ? { pointerEvents: "none" } : undefined}
       >
         <Header />
+        <Dialog
+          open={hasMissingResumeError}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleErrorDialogClose}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle>{"Resume Error"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              There was an issue retrieving the resume you selected, please
+              return to the previous page and try again. If this error persists,
+              please use the Contact Us form to send us a message and report the
+              issue.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleErrorDialogClose}>Ok</Button>
+          </DialogActions>
+        </Dialog>
         {hasError ? (
           <Alert
             message="Error saving resume, please try again later or contact support if the error persists"
