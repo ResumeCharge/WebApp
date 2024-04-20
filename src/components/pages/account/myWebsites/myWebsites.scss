@@ -1,0 +1,172 @@
+@mixin custom-button {
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #2ce080;
+  border: #2ce080 .125rem solid;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+  align-self: end;
+  justify-self: start;
+  margin: 10px 0;
+  &:hover {
+    color: #03314b;
+    background-color: #20ba68;
+    border-color: #20ba68;
+    cursor: pointer;
+  }
+}
+
+.websites_container_main {
+  display: grid;
+  grid-template-columns: minmax(100px, 1000px);
+  grid-template-rows: auto;
+}
+
+.websites_no_deployments{
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.websites_item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 0.25em;
+  box-shadow: 0 6px 10px 0 rgba(17, 17, 17, 0.06);
+  padding: 1rem 2rem 1rem 2rem;
+  .websites_item_details{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .websites_item_title{
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+  }
+  .websites_item_link{
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #6d787e;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+  }
+  .websites_item_view{
+    @include custom-button
+  }
+  .websites_item_cancel{
+    @include custom-button;
+    margin: 0;
+    background-color: #F0544E;
+    color: white;
+    border: none;
+    &:hover{
+      background-color: #F0544E;
+    }
+  }
+
+  .websites_item_status_descriptor_and_refresh{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 25px;
+    align-items: center;
+    justify-items: center;
+    h1{
+      margin: 0;
+    }
+  }
+  .ant-progress{
+    max-width: 300px;
+  }
+
+  .websites_item_status{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items:  center;
+    justify-items: center;
+    h1{
+      font-size: 1rem;
+      font-family: "CeraPRO-Bold", sans-serif, arial;
+      font-weight: bold;
+    }
+  }
+  .websites_item_refresh_icon.refreshed{
+    transform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    transition: 0.5s ease-in-out;
+
+  }
+
+  .websites_item_refresh_icon{
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #2ce080;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #2ce080 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .websites_item_details{
+    justify-items: start;
+    p{
+      padding: 0;
+    }
+  }
+  .websites_item_status_descriptor_and_refresh{
+    .websites_item_title{
+      font-size: 1rem;
+    }
+  }
+  .websites_item{
+    grid-template-columns: 1fr;
+    justify-items: start;
+    align-items: center;
+    grid-row-gap: 30px;
+  }
+  .lds-ring{
+    justify-self: start;
+  }
+  .ant-progress{
+    justify-self: start;
+  }
+}

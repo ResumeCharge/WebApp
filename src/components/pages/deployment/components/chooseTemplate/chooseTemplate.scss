@@ -1,0 +1,18 @@
+.choose_template_main_heading {
+  text-align: center;
+  margin-bottom: 75px;
+
+  h1 {
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .choose_template_main_heading {
+    h1{
+      font-size: 1.5rem;
+    }
+  }
+}

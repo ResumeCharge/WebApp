@@ -1,0 +1,304 @@
+@import "src/assets/styles/global";
+
+.preview_content_container{
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #fff;
+    box-shadow: 0 0 2rem rgba(0,0,0,.1);
+    padding: 2rem;
+    margin-bottom: 200px;
+}
+
+.preview_md_content{
+    padding: 0;
+}
+
+.preview_page_title{
+    margin-bottom: 5px;
+}
+
+.preview_extra_links{
+    ul{
+        list-style: none;
+        padding: 0;
+    }
+    .preview_extra_links_item{
+        display: grid;
+        grid-template-columns: min-content min-content;
+        grid-column-gap: 10px;
+        p{
+            font-size: 1rem;
+        }
+
+        .preview_extra_links_item_name{
+            font-weight: bold;
+            font-family: "CeraPRO-Bold", sans-serif, arial;
+        }
+    }
+}
+
+.preview_work_experience_list{
+    list-style: none;
+    padding: 0;
+    .preview_work_experience_list_item{
+        margin-bottom: 25px;
+    }
+    .work_experience_role{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    .work_experience_start_end_date{
+        display: grid;
+        grid-template-columns: auto auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .work_experience_location{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.education_list{
+    list-style: none;
+    padding: 0;
+    .education_list_item{
+        margin-bottom: 25px;
+    }
+    .education_list_item_degree{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    .education_list_item_start_end_date{
+        display: grid;
+        grid-template-columns: auto auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.projects_list{
+    list-style: none;
+    padding: 0;
+    .projects_list_item{
+        margin-bottom: 25px;
+    }
+    .projects_list_item_title{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+.preview_section_title,.preview_page_title{
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+}
+
+.preview_page_title_subtext{
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.preview_container {
+    height: 100%;
+}
+
+.preview_signup_overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.preview_signup_signin_prompt_overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: #f3f3f3;
+    padding: 5vw 10vw 10vw 10vw;
+    margin-bottom: 10vw;
+    z-index: 999;
+}
+
+.preview_signup_signin{
+    display: grid;
+    h1{
+        font-weight: 700;
+        font-size: 2.2rem;
+        color: #4a4a4a;
+        white-space: nowrap;
+    }
+    button{
+        font-family: Roboto;
+        justify-self: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: #64ca97;
+        color: white;
+        border-radius: 0.25em;
+        white-space: nowrap;
+        padding: 10px 20px 10px 20px;
+        box-shadow: 0 6px 10px 0 rgba(17, 17, 17, 0.06);
+        border: none;
+        align-self: end;
+        margin: 10px 0;
+        min-width: 150px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.preview_content_section{
+    justify-self: start;
+    margin-bottom: 2rem;
+    .preview_work_experience_title{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+    }
+    p{
+        margin: 0;
+    }
+}
+
+.preview_personal_details_item{
+    h3{
+        font-weight: bold;
+        font-size: 1.15rem;
+    }
+    p{
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+
+.preview_title{
+    h1{
+        font-size: 2.2rem;
+    }
+    p{
+        margin-bottom: 25px;
+    }
+}
+
+.preview_personal_details{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 25px;
+}
+
+.preview_buttons_back{
+    color: #333;
+    background-color: transparent;
+    border: 1px solid #cacaca;
+    &:hover{
+        background-color: #f9fbfa;
+    }
+}
+
+.preview_buttons_next{
+    @include custom-button;
+    &.disabled{
+        &:hover{
+            cursor: not-allowed;
+        }
+    }
+}
+
+.preview_buttons_container{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 -3px 7px 0 rgba(0,0,0,.12);
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    z-index: 101;
+    grid-template-columns: repeat(2, minmax(100px, 250px));
+    justify-self: center;
+    column-gap: 3rem;
+    button {
+        display: grid;
+        justify-self: center;
+        width: 100%;
+        font-family: Roboto, sans-serif;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: .25em;
+        white-space: nowrap;
+        padding: 5px 15px 5px 15px;
+        box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+        align-self: end;
+        &:hover{
+            cursor: pointer;
+
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .preview_content_container{
+        margin-left: 15vw;
+        margin-right: 15vw;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .preview_signup_signin_prompt_overlay{
+        width: 100vw;
+        h1{
+            font-size: 1.8em;
+            white-space: initial;
+        }
+    }
+    .preview_buttons_container{
+        column-gap: 1rem;
+        button{
+            font-size: 1rem;
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .preview_buttons_container{
+        .preview_buttons_next{
+            width: 150px;
+            min-width: 0;
+        }
+        button{
+            width: 150px;
+        }
+    }
+
+    .preview_content_container{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .preview_personal_details{
+        grid-template-columns: 1fr;
+        padding-left: 25px;
+    }
+}
+

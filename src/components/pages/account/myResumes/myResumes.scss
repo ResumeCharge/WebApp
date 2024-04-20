@@ -1,0 +1,185 @@
+@mixin custom-button {
+  width: 100%;
+  min-width: 230px;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #2ce080;
+  border: #2ce080 .125rem solid;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+  align-self: end;
+  justify-self: end;
+  margin: 10px 0;
+  &:hover {
+    color: #03314b;
+    background-color: #20ba68;
+    border-color: #20ba68;
+    cursor: pointer;
+  }
+}
+
+.resumes_list_container{
+  display: grid;
+  grid-template-columns:  repeat( auto-fill, 300px );
+  list-style: none;
+  padding-top: 20px;
+  column-gap: min(50px, 10vw);
+  row-gap: min(25px, 5vh);
+  justify-items: start;
+  .resumes_list_item{
+    display: grid;
+    grid-template-columns: auto;
+    border-radius: 0.25em;
+    justify-items: center;
+    box-shadow: 0 6px 10px 0 rgba(17, 17, 17, 0.06);
+    padding: 1rem 2rem 1rem 2rem;
+    &:hover{
+      background-color: #fafbfc;
+    }
+    .resumes_list_item_title{
+      font-size: 1.35rem;
+      font-weight: bold;
+      font-family: "CeraPRO-Bold", sans-serif, arial;
+    }
+    .resume_list_item_content{
+      .resume_list_item_button_container{
+        padding: 5px 0 5px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        margin: 10px 0 10px 0;
+        img{
+          width: 25%;
+          height: auto;
+          justify-self: end;
+          margin-right: 10px;
+        }
+        .resumes_list_button_primary{
+          background-color: #2ce080;
+          border: #2ce080 .125rem solid;
+          font-family: "CeraPRO-Bold", sans-serif, arial;
+          font-weight: bold;
+          &:hover{
+            color: #03314b;
+            background-color: #20ba68;
+            border-color: #20ba68;
+            cursor: pointer;
+          }
+        }
+        button{
+          display: inline-block;
+          margin-bottom: 0;
+          font-weight: 400;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          background-image: none;
+          border: 1px solid transparent;
+          padding: 6px 12px;
+          font-size: 14px;
+          line-height: 1.428571429;
+          border-radius: 3px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          &:hover{
+            cursor: pointer;
+            border-color: black;
+          }
+        }
+      }
+      .resume_list_item_deploy_button{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 15px 10px 10px 10px;
+        button{
+          @include custom-button
+        }
+      }
+    }
+    hr{
+      margin: 0;
+    }
+    .resume_list_item_details{
+      font-size: 0.5rem;
+      font-weight: 500;
+    }
+  }
+  .resumes_list_add_new{
+    margin: 0;
+    padding: 1rem 2rem 1rem 2rem;
+    .resume_list_item_content{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .resumes_list_add_new_button_container{
+      margin: 0 10px 20px 10px;
+      align-self: end;
+    }
+    display: grid;
+    grid-template-columns: 1fr;
+    button{
+      @include custom-button
+    }
+    img{
+      justify-self: center;
+      width: 25%;
+      height: auto;
+      margin-bottom: 25px;
+    }
+  }
+  p{
+    text-align: center;
+    padding: 0;
+    margin: 0 0 10px 0;
+  }
+}
+
+.resume_list_item_loading{
+  display: grid;
+  grid-template-rows: 1fr 25px 225px;
+  justify-items: center;
+  width: 200px;
+  height: 250px;
+}
+
+.resumes_modal_spinner{
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background: none;
+  .ant-spin{
+    width: 200px;
+    height: 200px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    span{
+      width: 50px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .resumes_list_container {
+    column-gap: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .resumes_list_container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 0;
+  }
+
+}
+

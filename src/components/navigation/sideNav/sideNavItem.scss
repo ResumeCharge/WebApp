@@ -1,0 +1,42 @@
+.sidenav-active{
+  transition: 0.3s ease-in-out;
+  border-left: 5px solid #0365f2;
+  padding: 10px 0 10px 5px;
+  p{
+    color: #0365f2;
+  }
+  &:hover{
+    cursor: pointer;
+    background: lightgray;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.sidenav-item{
+  padding: 10px 10px 10px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  transition: 0.3s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    background: #f0f0ed;
+    transition: 0.3s ease-in-out;
+  }
+  p{
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+  }
+}
+
+.sidenav-disabled{
+  opacity: 0.65;
+  &:hover{
+    cursor: not-allowed;
+    background: none;
+  }
+}
+
+p{
+  width: fit-content;
+  margin: 0 0 0 10px;
+}

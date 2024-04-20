@@ -1,0 +1,47 @@
+@use "src/assets/styles/global";
+
+.add_lng_form{
+    display: grid;
+    width: min-content;
+    padding-bottom: 50px;
+}
+
+.add_lng_name, .add_lng_proficiency{
+    font-weight: bold;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+}
+
+.add_lng_field_container input{
+    background-color: #fff;
+    color: #454545;
+    text-decoration: none;
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: normal;
+    font-size: 1rem;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1.15rem 1rem;
+    display: inline-block;
+    width: 20rem;
+}
+
+
+.add_lng_submit{
+    @include global.custom-button;
+    display: grid;
+    justify-self: end;
+    min-width: 150px;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    width: min-content;
+}
+
+@media (max-width: 800px) {
+    .add_lng_submit{
+        justify-self: center;
+    }
+}

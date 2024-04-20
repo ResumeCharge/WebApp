@@ -1,0 +1,195 @@
+@use "src/assets/styles/global";
+
+@import url('@radix-ui/colors/tomatoDark.css');
+@import url('@radix-ui/colors/mauveDark.css');
+@import url('@radix-ui/colors/gray.css');
+
+.edu_form {
+  display: grid;
+  background-color: #fff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, .1);
+  padding: 2rem;
+  width: 100%;
+  align-self: start;
+  margin-top: 25px;
+
+  .light-editor {
+    border: 1px solid #d7d9db;
+    border-radius: 0.5em;
+  }
+}
+
+.additional_details {
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+}
+
+.edu_field_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2.43902439%;
+}
+
+.edu_container {
+  display: grid;
+}
+
+.edu_field_container.edu_start_end_date {
+  display: grid;
+  grid-template-columns: 10rem 10rem;
+  width: 5rem;
+}
+
+.edu_start_date, .edu_end_date, .edu_university, .edu_degree {
+  font-weight: bold;
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 0.25fr;
+}
+
+.edu_form input {
+  background-color: #fff;
+  color: #454545;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: normal;
+  font-size: 1rem;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 1.15rem 1rem;
+  display: inline-block;
+  width: 20rem;
+}
+
+.edu_field_container.edu_start_end_date input {
+  background-color: #fff;
+  color: #454545;
+  text-decoration: none;
+  font-family: "Roboto";
+  line-height: 1.25;
+  letter-spacing: normal;
+  font-size: 0.9rem;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem;
+  display: inline-block;
+  width: 9rem;
+}
+
+
+.edu_submit {
+  display: grid;
+  justify-self: end;
+}
+
+.edu_list {
+  display: grid;
+  list-style: none;
+  padding: 0;
+}
+
+.edu_form_title {
+  h1 {
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+    font-size: 2.2rem;
+    color: #4a4a4a;
+  }
+}
+
+.edu_add_new_education_title {
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.edu_list_item {
+  display: grid;
+  grid-template-columns: 1fr 0.25fr;
+  padding: 10px;
+}
+
+.edu_list_item:hover {
+  background-color: #f8faf9;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  border: 0 solid black;
+}
+
+.edu_list_item_button_container {
+  justify-self: end;
+  align-self: center;
+
+  button {
+    @include global.custom-button;
+    font-size: 1rem;
+    min-width: 100px;
+
+    &:hover {
+      background-color: #F0544E !important;
+      border-color: #F0544E !important;
+      color: white !important;
+    }
+  }
+}
+
+.edu_add_new_education_button {
+  display: grid;
+  justify-self: end;
+  min-width: 130px;
+  font-family: Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: white;
+  color: #64ca97;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 5px 15px 5px 15px;
+  margin-top: 25px;
+  box-shadow: 0 6px 10px 0 rgba(17, 17, 17, .06);
+  border: 1px solid #64ca97;
+  align-self: end;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #18de84;
+    color: white;
+  }
+}
+
+.edu_next {
+  display: grid;
+  justify-self: end;
+  width: 100%;
+  font-family: Roboto, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #64ca97;
+  color: white;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 5px 15px 5px 15px;
+  margin-top: 50px;
+  box-shadow: 0 6px 10px 0 rgba(17, 17, 17, .06);
+  border: 1px solid #64ca97;
+  align-self: end;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #18de84;
+    color: white;
+  }
+}
+
+.edu_md_editor_content{
+  @include global.markdown-form-editor
+}
+
+@media (max-width: 700px) {
+  .edu_field_container {
+    grid-template-columns: 1fr;
+  }
+}

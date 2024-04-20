@@ -1,0 +1,200 @@
+.account_details_main_content {
+  h1 {
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+  }
+
+  .account_details_title {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.33;
+    color: #03314B;
+
+  }
+
+  .account_details_plan_info {
+    padding-top: 1.5625rem;
+    color: #042330;
+    font-size: 1.625rem;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    line-height: 1.9375rem;
+    margin-bottom: 1rem;
+  }
+
+  .account_details_premium_button,.account_details_manage_button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #03314b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: .6875rem 1rem .8125rem;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    background-color: #2ce080;
+    border: #2ce080 .125rem solid;
+    border-radius: .25rem;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:hover {
+      color: #03314b;
+      background-color: #20ba68;
+      border-color: #20ba68;
+    }
+  }
+
+  .account_details_billing_portal_link {
+    margin-bottom: 1rem;
+    padding-top: 1.25rem;
+    font-size: 1rem;
+    font-family: "CeraPRO-Medium", sans-serif, arial;
+    line-height: 1.1875rem;
+    color: #2678eb;
+
+    &:hover {
+      color: #0552be;
+      cursor: pointer;
+    }
+  }
+
+  .account_details_login_info {
+    font-weight: bold;
+  }
+
+  .account_details_email {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #6d787e;
+    }
+  }
+
+  .account_details_password {
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #6d787e;
+    }
+  }
+}
+
+
+.account_details_email {
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0 0 25px;
+    font-size: 2rem;
+  }
+
+  margin-bottom: 50px;
+}
+
+.account_details_change_password.account_details_fields {
+  @extend .account_details_email;
+  margin-bottom: 25px;
+
+  h1 {
+    font-weight: bold !important;
+    color: black !important;
+    margin-bottom: 1rem;
+  }
+
+  .password_reset_result_messages {
+    p {
+      margin-top: 5px;
+      font-size: 1rem;
+      color: red;
+      margin-bottom: 0;
+    }
+  }
+
+  .account_details_password_input_field {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+
+    label {
+      font-size: 1.2rem;
+      font-weight: 550;
+    }
+
+    input {
+      border: 1px solid #8f8f9d;
+      min-width: 200px;
+      width: 50%;
+      max-width: 500px;
+      box-shadow: none;
+      line-height: 45px;
+      border-radius: .2em;
+      font-size: 14px;
+      padding-left: 15px;
+
+      &:focus {
+        outline-style: none;
+      }
+    }
+  }
+
+  button {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #03314b;
+    background-color: #2ce080;
+    border: #2ce080 .125rem solid;
+    border-radius: .25em;
+    white-space: nowrap;
+    padding: 10px 20px 10px 20px;
+    box-shadow: 0 6px 10px 0 rgba(17, 17, 17, .06);
+    align-self: end;
+    margin: 25px 0;
+    min-width: 150px;
+
+    &:hover {
+      color: #03314b;
+      background-color: #20ba68;
+      border-color: #20ba68;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .account_details_email {
+    h1 {
+      font-size: clamp(1rem, 10vw, 2rem);
+    }
+    p {
+      font-size: clamp(1rem, 10vw, 2rem);
+    }
+    margin-bottom: 50px;
+  }
+
+  .password_reset_result_messages {
+    p {
+      font-size: 14px;
+    }
+  }
+  .account_details_main_content {
+    justify-items: center;
+
+  }
+}

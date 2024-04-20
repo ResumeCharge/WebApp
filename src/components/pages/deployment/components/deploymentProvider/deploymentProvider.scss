@@ -1,0 +1,24 @@
+.deployment_provider_container{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.deployment_provider_title{
+  margin-top: 10px;
+  margin-bottom: 50px;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-left: 10px;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.deployment_provider_cards{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-bottom: 50px;
+  justify-self: center;
+}

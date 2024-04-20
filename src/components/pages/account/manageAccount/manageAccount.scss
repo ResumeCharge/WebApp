@@ -1,0 +1,111 @@
+.manage_account_content_container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 10fr;
+}
+
+
+.manage_account_main_content{
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding: 0 75px 50px 75px;
+  border-radius: 8px;
+}
+
+.manage_account_menu{
+  h1{
+    font-weight: bold;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    margin-bottom: 20px;
+  }
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding: 50px 75px 50px 75px;
+  .manage_account_menu_items{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    p{
+      margin: 0;
+      font-family: "CeraPRO-Bold", sans-serif, arial;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.33;
+    }
+    .manage_account_menu_item{
+      border-bottom: 0.125rem solid #BAC8CE;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    .manage_account_menu_active_item{
+      color: #0365f2;
+      border-bottom-color: #2ce080;
+    }
+  }
+}
+
+.manage_account_menu_dropdown{
+  height: min-content;
+  margin-top: 10px;
+  display: none;
+  grid-template-rows: auto;
+}
+
+@media (max-width: 800px) {
+  .manage_account_container{
+    display: grid;
+    grid-template-rows: min-content 1fr 1fr;
+  }
+  .manage_account_content_container{
+    grid-template-columns:  1fr;
+    grid-template-rows: min-content min-content min-content;
+    justify-items: center;
+  }
+  .manage_account_menu{
+    margin-right: 2vw;
+    margin-left: 2vw;
+    padding-bottom: 50px;
+    width: 100%;
+  }
+
+  .manage_account_menu_dropdown{
+    button{
+      font-size: 1rem;
+      font-weight: bold;
+      border: 1px solid;
+      border-radius: .15em;
+      background: white;
+      padding: 10px 45px 10px 45px;
+      &:hover{
+        cursor: pointer;
+        background: #f5f5f5;
+      }
+    }
+  }
+
+  .manage_account_main_content{
+    margin-right: 2vw;
+    margin-left: 2vw;
+    width: 100%;
+  }
+
+  .manage_account_side_nav{
+    display: none;
+  }
+  .manage_account_menu_dropdown{
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .manage_account_menu{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 15px 25px 15px 25px;
+  }
+  .manage_account_main_content{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 15px 25px 15px 25px;
+  }
+}

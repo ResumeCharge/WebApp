@@ -1,0 +1,282 @@
+@use "src/assets/styles/global";
+
+.el_field_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-column-gap: 50px;
+}
+
+.el_container{
+    display: grid;
+}
+
+.el_form{
+    display: grid;
+    background-color: #fff;
+    box-shadow: 0 0 2rem rgba(0,0,0,.1);
+    padding: 2rem;
+    width: 100%;
+    align-self: start;
+    margin-top: 25px;
+}
+
+.el_form_title{
+    h1{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+        font-size: 2.2rem;
+        color: #4a4a4a;
+    }
+    p{
+        font-size: 1rem;
+        color: #989898;
+        letter-spacing: .12px;
+        line-height: 22px;
+        margin: 0 0 25px;
+    }
+}
+
+.el_linkName, .el_linkValue{
+    font-weight: bold;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 0.25fr;
+}
+
+.el_list{
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    letter-spacing: .009375em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    list-style-type: none;
+    color: rgba(0,0,0,.87);
+    column-span: all;
+    margin: 0 0 15px;
+    padding: 0 0 20px 0;
+    border-radius: 10px;
+}
+
+.el_next{
+    display: grid;
+    justify-self: end;
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #64ca97;
+    color: white;
+    border-radius: .25em;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    margin-top: 100px;
+    box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+    border: 1px solid #64ca97;
+    align-self: end;
+    &:hover{
+        cursor: pointer;
+        background-color: #18de84;
+        color: white;
+    }
+}
+
+.el_list_item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    h1{
+        font-size: 1rem;
+        font-weight: bold;
+        width: min-content;
+        padding: 0;
+        margin: 0 10px 0 0;
+        align-self: center;
+    }
+    button{
+        padding: 5px 20px 5px 20px;
+        width: 100px;
+        justify-self: end;
+    }
+    margin-bottom: 25px;
+}
+
+
+.el_list_item button:hover{
+    cursor: pointer;
+}
+
+.el_card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    padding: 20px;
+}
+
+.el_card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.el_field{
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: clamp(0.5rem, 0.8rem + 2vw, 1.7rem)
+}
+
+.el_form input{
+    background-color: #fff;
+    color: #454545;
+    text-decoration: none;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: normal;
+    font-size: 1rem;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1.15rem 1rem;
+    display: inline-block;
+    width: 100%;
+}
+
+.el_add_new_link_button{
+    display: grid;
+    justify-self: end;
+    min-width: 150px;
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: white;
+    color: #64ca97;
+    border-radius: .25em;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+    border: 1px solid #64ca97;
+    align-self: end;
+    grid-column: 2;
+    &:hover{
+        cursor: pointer;
+        background-color: #18de84;
+        color: white;
+    }
+}
+
+.link_editing{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    align-items: center;
+    input{
+        width: 15rem;
+        margin: 0;
+        padding: 12px 5px 12px 10px;
+        &:focus{
+            outline: none !important;
+            border-color: #4195fc;
+            box-shadow: 0 0 10px #719ECE;
+        }
+    }
+}
+
+.link_input_editing{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 25px;
+    p{
+        font-size: 1rem;
+    }
+}
+
+.link_button_editing {
+    align-self: end;
+    justify-self: end;
+    button{
+        @include global.custom-button;
+        min-width: min-content;
+        font-size: 1rem;
+        padding: 5px 10px 5px 10px;
+        margin-bottom: 25px;
+    }
+}
+
+.el_field input:focus{
+    outline: none;
+}
+
+.el_phone{
+    font-size: clamp(0.5rem, 0.8rem + 2vw, 1.7rem)
+}
+
+.link_immutable{
+    display: grid;
+    grid-template-columns: min-content min-content;
+    padding-right: 25px;
+    text-overflow: ellipsis;
+    .link_immutable_name{
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+    }
+    .link_immutable_value{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+    }
+}
+
+.el_add_new_link_title{
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.link_buttons_not_editing{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    align-self: end;
+    justify-self: end;
+    button{
+        @include global.custom-button;
+        min-width: min-content;
+        font-size: 1rem;
+        padding: 5px 10px 5px 10px;
+    }
+}
+
+.link_buttons_not_editing_delete{
+    &:hover{
+        background-color: #F0544E !important;
+        border-color: #F0544E !important;
+        color: white !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .el_field_container{
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    .el_add_new_link_button{
+        justify-self: end;
+        grid-column: 1;
+    }
+    .el_form{
+        justify-content: center;
+    }
+    .el_list{
+        display: grid;
+        justify-items: center;
+    }
+}
+.el_field_container.el_new_link_fields{
+    padding-bottom: 0;
+}

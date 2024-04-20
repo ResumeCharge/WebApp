@@ -1,0 +1,197 @@
+@use "src/assets/styles/global";
+
+
+.wrk_form {
+    display: grid;
+    background-color: #fff;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .1);
+    padding: 2rem;
+    max-width: 1000px;
+    align-self: start;
+    margin-top: 25px;
+    .light-editor {
+        border: 1px solid #d7d9db;
+        border-radius: 0.5em;
+    }
+}
+
+.work_details{
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+}
+
+.wrk_form_title{
+    h1{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: bold;
+        font-size: 2.2rem;
+        color: #4a4a4a;
+    }
+}
+
+.wrk_md_editor_content{
+    @include global.markdown-form-editor
+}
+
+.wrk_field_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2.43902439%;
+    padding-bottom: 0.5rem;
+}
+
+.wrk_container {
+    display: grid;
+}
+
+.wrk_field_container.wrk_start_end_date {
+    display: grid;
+    grid-template-columns: 10rem 10rem;
+    width: 5rem;
+}
+
+.wrk_start_date, .wrk_end_date, .wrk_rolename, .wrk_company, .wrk_location {
+    font-weight: bold;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 0.25fr;
+}
+
+.wrk_form input {
+    background-color: #fff;
+    color: #454545;
+    text-decoration: none;
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: normal;
+    font-size: 1rem;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1.15rem 1rem;
+    display: inline-block;
+    width: 20rem;
+}
+
+.wrk_date_location_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrk_field_container.wrk_start_end_date input {
+    background-color: #fff;
+    color: #454545;
+    text-decoration: none;
+    font-family: "Roboto";
+    line-height: 1.25;
+    letter-spacing: normal;
+    font-size: 0.9rem;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 0.5rem 0.5rem;
+    display: inline-block;
+    width: 9rem;
+}
+
+
+.wrk_submit {
+    display: grid;
+    justify-self: end;
+}
+
+.wrk_list {
+    display: grid;
+    list-style: none;
+    padding: 0;
+}
+
+.wrk_list_item {
+    display: grid;
+    grid-template-columns: 1fr 0.25fr;
+    padding: 10px;
+}
+
+.wrk_list_item:hover {
+    background-color: #f8faf9;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    border: 0 solid black;
+}
+
+.wrk_add_new_experience_title{
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.wrk_list_item_button_container {
+    justify-self: end;
+    align-self: center;
+    button{
+       @include global.custom-button;
+        font-size: 1rem;
+        min-width: 100px;
+        &:hover{
+            background-color: #F0544E !important;
+            border-color: #F0544E !important;
+            color: white !important;
+        }
+    }
+}
+
+.wrk_next{
+    display: grid;
+    justify-self: end;
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #64ca97;
+    color: white;
+    border-radius: .25em;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    margin-top: 50px;
+    box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+    border: 1px solid #64ca97;
+    align-self: end;
+    &:hover{
+        cursor: pointer;
+        background-color: #18de84;
+        color: white;
+    }
+}
+
+.wrk_md{
+    height: 500px;
+}
+
+.wrk_add_new{
+    display: grid;
+    justify-self: end;
+    min-width: 150px;
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: white;
+    color: #64ca97;
+    border-radius: .25em;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    margin-top: 25px;
+    box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+    border: 1px solid #64ca97;
+    align-self: end;
+    &:hover{
+        cursor: pointer;
+        background-color: #18de84;
+        color: white;
+    }
+}
+
+@media (max-width: 700px) {
+    .wrk_field_container {
+        grid-template-columns: 1fr;
+    }
+}

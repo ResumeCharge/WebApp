@@ -1,0 +1,29 @@
+@mixin custom-button {
+  width: 100%;
+  min-width: 230px;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #2ce080;
+  border: #2ce080 .125rem solid;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+  &:hover {
+    color: #03314b;
+    background-color: #20ba68;
+    border-color: #20ba68;
+    cursor: pointer;
+  }
+}
+
+@mixin form-section-label{
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+}
+
+@mixin markdown-form-editor{
+  max-height: 500px;
+  overflow: scroll;
+}

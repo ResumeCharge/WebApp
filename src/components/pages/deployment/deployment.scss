@@ -1,0 +1,224 @@
+@import "src/assets/styles/global";
+
+.deployment_container{
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  height: 100vh;
+  background-color: #f4f5ff;
+}
+
+.deployment_back_button{}
+
+.deployment_container_main_content{
+  height: min-content;
+}
+
+.choose_deployment_provider_container{
+  display: grid;
+}
+
+.deployments_content{
+  display: grid;
+  padding: 0 10vw 0 10vw;
+  justify-content: center;
+  background-color: #f4f5ff;
+  p{
+    margin: 0;
+  }
+}
+
+.deployments_content_container{
+  display: grid;
+  grid-template-columns: auto minmax(500px, 1fr);
+}
+
+.deployments_content_side{
+  display: grid;
+  width: 100%;
+  grid-template-rows: min-content;
+  .image_ideas{
+    max-width: 300px;
+    width: 100%;
+    justify-self: end;
+  }
+  .image_happy{
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 75px;
+  }
+}
+
+.deployments_form{
+  display: grid;
+  background-color: #fff;
+  box-shadow: 0 0 2rem rgba(0,0,0,.1);
+  padding: 2rem;
+  min-width: 500px;
+  width: 100%;
+  align-self: start;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.deployments_title{
+  justify-items: center;
+  display: grid;
+  h1{
+    font-size: 3rem;
+    margin-top: 3vh;
+    font-weight: bold;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    margin-bottom: 0;
+  }
+  p{
+    margin-bottom: 25px;
+  }
+}
+
+.deployments_premium_features_section{
+
+}
+
+.deployments_premium_features_title{
+  background: none;
+  opacity: 1;
+  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+  h1{
+    color: #ff9703;
+  }
+}
+
+.deployments_resume, .deployments_template, .deployments_provider{
+  margin-bottom: 15px;
+  .deployments_resume_title, .deployments_template_title, .deployments_provider_title{
+    h1{
+      font-weight: lighter;
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+      height: fit-content;
+    }
+  }
+  .deployments_resume_item,.deployments_template_item, .deployments_provider_item{
+    width: fit-content;
+    font-weight: bold;
+    h1{
+      font-size: 2rem;
+      color: #24252d;
+    }
+  }
+}
+
+.deployments_extra_options{
+  margin-bottom: 50px;
+  .deployments_extra_options_title{
+    margin-bottom: 15px;
+    h1{
+      font-weight: lighter;
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+      height: fit-content;
+    }
+  }
+  .deployments_extra_options_profile_picture{
+    display: grid;
+    margin-bottom: 50px;
+    img{
+      height: auto;
+      width: 400px;
+    }
+  }
+  .deployments_extra_options_upload_resume{
+    margin-bottom: 50px;
+    h1{
+      margin: 0;
+    }
+    button{
+      margin-top: 25px;
+    }
+    .upload_resume_input{
+      display: grid;
+    }
+  }
+  .deployments_extra_options_container{
+    display: grid;
+    margin-bottom: 50px;
+    label{
+      font-weight: bold;
+      font-size: 1.25rem;
+      font-family: "CeraPRO-Bold", sans-serif, arial;
+    }
+    input{
+      max-width: 300px;
+      background-color: #fff;
+      color: #454545;
+      text-decoration: none;
+      font-family: "Roboto", serif;
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: normal;
+      font-size: 1rem;
+      border: 1px solid #696969;
+      border-radius: 4px;
+      box-shadow: none;
+      padding: 1.15rem 1rem;
+      display: inline-block;
+      width: 20rem;
+    }
+  }
+}
+
+.deployments_upload_item_container{
+  h1{
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+  }
+}
+
+.deployment_deploy_button{
+  @include custom-button;
+  justify-self: center;
+  max-width: 500px;
+}
+
+.deployment_deploy_button.disabled{
+  &:hover{
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 900px) {
+  .deployments_content_container{
+    grid-template-columns: 1fr;
+  }
+  .deployments_content_side{
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .deployments_content{
+    padding: 0;
+  }
+  .deployments_form{
+    min-width: 0px;
+  }
+  .deployments_extra_options .deployments_extra_options_seo{
+    input{
+      width: 200px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .deployments_extra_options{
+    .deployments_extra_options_profile_picture{
+      img{
+        width: 200px;
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.cp_container {
+    display: grid;
+    grid-template-rows: clamp(1rem, 10vw, 3rem) 2rem 1fr;
+    height: 100%;
+}
+
+.cp_forms{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: start;
+    align-self: start;
+    max-width: 1200px;
+}
+.cp_active_content{
+    display: grid;
+    padding-bottom: 130px;
+}
+
+.cp_steps {
+    display: grid;
+    height: 50vh;
+    margin-top: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.cp_progress {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    align-items: start;
+    justify-items: start;
+}
+
+.cp_dropdown {
+    justify-self: center;
+}
+
+.cp_sideNav {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    width: max-content;
+    padding-top: 25px;
+    background-color: #f8faf9;
+}
+
+.cp_sidenav_list{
+    list-style: none;
+    width: fit-content;
+    padding: 0;
+}
+
+.sidenav-item{
+
+}
+
+@media (min-width: 1300px) {
+    .cp_main {
+        display: grid;
+        grid-template-columns: 1.5fr 5fr 1fr;
+        height: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .cp_content {
+        display: grid;
+        justify-self: start;
+        padding-left: 10vw;
+    }
+
+    .cp_dropdown{
+        display: none;
+    }
+}
+
+.cp_sideNav{
+    display: none;
+}
+
+@media (min-width: 1000px) {
+    .cp_main {
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
+        height: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .cp_content {
+        display: grid;
+        justify-self: start;
+        padding-left: 5vw;
+    }
+
+    .cp_dropdown{
+        display: none;
+    }
+
+    .cp_sideNav{
+        display: grid;
+    }
+}
+

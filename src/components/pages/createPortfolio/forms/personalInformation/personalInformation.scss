@@ -1,0 +1,198 @@
+@use "src/assets/styles/global";
+
+.pi_form {
+  display: grid;
+  background-color: #fff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, .1);
+  padding: 2rem;
+  width: 100%;
+  align-self: start;
+  margin-top: 25px;
+}
+
+.pi_title {
+  font-weight: bold;
+  font-size: 2.2rem;
+  color: #4a4a4a;
+  margin-bottom: 50px;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+}
+
+.pi_field_container {
+  display: grid;
+  padding-bottom: 1rem;
+  justify-items: start;
+  grid-template-columns: min-content min-content;
+  column-gap: 50px;
+}
+
+.add_lng_field_container {
+  justify-self: start;
+  column-gap: 50px;
+}
+
+.pi_fname, .pi_lname, .pi_email, .pi_phone, .pi_linkedin, .pi_github, .pi_name, .pi_proficiency {
+  font-weight: bold;
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 0.5fr;
+}
+
+.pi_form input {
+  background-color: #fff;
+  color: #454545;
+  text-decoration: none;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: normal;
+  font-size: 1rem;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 1.15rem 1rem;
+  display: inline-block;
+  width: 20rem;
+
+}
+
+.pi_field_container.pi_avatar_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-bottom: 20px;
+  justify-items: center;
+  font-weight: bold;
+}
+
+.pi_avatar_container img {
+  height: 8rem;
+}
+
+.pi_avatar_container input {
+  border: none;
+  padding: 0;
+  width: 100%;
+  justify-self: center;
+  text-align: center;
+}
+
+.pi_submit {
+  display: grid;
+  justify-self: center;
+  width: 100%;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #64ca97;
+  color: white;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 5px 15px 5px 15px;
+  box-shadow: 0 6px 10px 0 rgba(17, 17, 17, .06);
+  border: 1px solid #64ca97;
+  align-self: end;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #18de84;
+    color: white;
+  }
+}
+
+.pi_field_container.pi_languages_list {
+  display: grid;
+  justify-self: start;
+  justify-items: start;
+  grid-template-columns: 1fr;
+
+  h2 {
+    @include global.form-section-label
+  }
+}
+
+.pi_github_linkedin_title {
+    @include global.form-section-label;
+}
+
+.add_lng_form {
+  justify-items: center;
+}
+
+
+.languages_list {
+  display: grid;
+  row-gap: 2vh;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.languages_list_item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-content: start;
+  text-align: start;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  button {
+    margin: 10px;
+  }
+
+  p {
+    margin: 0;
+    padding-right: 5vw;
+    font-size: 1rem;
+  }
+
+  &:hover {
+    background-color: #F5F5F5;
+    transition: 0.4s ease-in-out;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .pi_field_container {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .add_lng_field_container.add_lng_inputs {
+    width: 100%;
+    justify-items: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .add_lng_submit {
+    margin-right: 10vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .pi_form {
+    justify-items: center;
+  }
+  .pi_field_container{
+    grid-template-columns: 1fr;
+  }
+  .pi_field_container.pi_languages_list {
+    justify-self: center;
+  }
+  .pi_submit {
+    width: 80vw;
+    justify-self: center;
+  }
+  .pi_field_container {
+    input {
+      width: 65vw;
+    }
+  }
+  .add_lng_field_container {
+    div {
+      input {
+        width: 65vw;
+      }
+    }
+  }
+}

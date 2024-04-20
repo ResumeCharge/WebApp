@@ -1,0 +1,58 @@
+@use "src/assets/styles/global";
+
+.cs_form {
+    display: grid;
+    background-color: #fff;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .1);
+    padding: 2rem;
+    width: 100%;
+    align-self: start;
+    margin-top: 25px;
+}
+
+.cs_md_editor_content{
+    @include global.markdown-form-editor
+}
+
+
+.cs_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-bottom: 1rem;
+}
+
+.cs_title {
+    h1{
+        font-family: "CeraPRO-Bold", sans-serif, arial;
+        font-weight: 700;
+        font-size: 2.2rem;
+        color: #4a4a4a;
+    }
+    p{
+        font-size: 1rem;
+        color: #989898;
+        letter-spacing: .12px;
+        line-height: 22px;
+        margin-bottom: 25px;
+        margin-left: 0;
+    }
+}
+
+.cs_title_and_tooltip{
+    display: grid;
+    grid-template-columns: max-content 1rem;
+    align-items: center;
+    span{
+        margin-left: 5px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .cs_form{
+        justify-content: center;
+    }
+    .cs_form textarea {
+        width: 80vw;
+    }
+}

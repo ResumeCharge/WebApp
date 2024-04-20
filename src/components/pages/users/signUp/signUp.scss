@@ -1,0 +1,161 @@
+@import "src/assets/styles/global";
+
+.signup_container{
+  display: grid;
+  justify-items: center;
+  padding: 5vh 0 5vh 0;
+}
+
+.sign-up-main-container{
+  display: grid;
+  grid-template-rows: min-content min-content 1fr;
+  height: 100vh;
+}
+
+.sign-up-container-footer{
+  align-self: end;
+}
+
+.signup_card{
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.1);
+  border-radius: 10px;
+  background: #fff;
+  padding: 5vw 10vw 10vw 10vw;
+  margin-bottom: 10vw;
+}
+
+.signup_title{
+  display: grid;
+  justify-items: center;
+  margin-bottom: 2rem;
+  h1{
+    font-size: 3rem;
+    white-space: nowrap;
+    margin-bottom: 0;
+    width: min-content;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+  }
+  P{
+    font-size: 1.2rem;
+    width: min-content;
+    white-space: nowrap;
+  }
+}
+
+.signup_email{
+  margin-bottom: 2rem;
+}
+
+.signup_field{
+  p{
+    font-size: 0.8rem;
+    width: 30vw;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+}
+
+.signup_password{
+  input{
+    border-radius: .2em;
+  }
+
+  margin-bottom: 25px;
+}
+
+.signup_field{
+  display: grid;
+  justify-items: start;
+  label{
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  input{
+    border: 1px solid #8f8f9d;
+    width: 30vw;
+    box-shadow: none;
+    line-height: 45px;
+    border-radius: .2em;
+    font-size: 14px;
+    padding-left: 15px;
+    &:focus{
+      outline-style: none;
+    }
+  }
+}
+
+.signup_error{
+  position: absolute;
+  width: fit-content;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.signup_button{
+  justify-self: center;
+  font-size: 1.2rem;
+  background-color: #2ce080;
+  border: #2ce080 0.125rem solid;
+  color: #03314b;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  align-self: end;
+  margin: 10px 0;
+  min-width: 150px;
+  &:hover {
+    color: #03314b;
+    background-color: #20ba68;
+    border-color: #20ba68;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1200px) {
+  p{
+    margin: 0;
+  }
+  .signup_field input{
+    min-width: 420px;
+  }
+}
+
+@media (max-width: 800px) {
+  .signup_card{
+    padding: 25px 75px 25px 75px;
+  }
+  .signup_field input{
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 500px) {
+  .signup_container{
+    padding: 0;
+  }
+  .signup_title{
+    h1{
+      font-size: 2.5rem;
+    }
+    p{
+
+    }
+  }
+  .signup_card{
+    padding: 25px 10px 25px 10px;
+    width: 100%;
+  }
+  .signup_field input{
+    min-width: 0;
+    width: 80vw;
+  }
+}
+

@@ -1,0 +1,58 @@
+{
+  "personalDetails": {
+    "firstName": "Adam",
+    "lastName": "Lawson",
+    "avatar": "",
+    "email": "adam.lawson1337@gmail.com",
+    "phone": "6136065783",
+    "website": "",
+    "linkedin": "adamlawson",
+    "github": "adamlawson99",
+    "languages": []
+  },
+  "extraLinkList": [
+    {
+      "linkName": "twitter",
+      "linkValue": "adamtwitter",
+      "id": "rIaNRsrBjX_iCZJizt6x3"
+    }
+  ],
+  "careerSummary": {
+    "data": "some cool career summary"
+  },
+  "workExperienceList": [
+    {
+      "roleName": "Senior Software Engineer",
+      "company": "Acme INC",
+      "location": "Ottawa",
+      "details": "* Did some cool stuff\n* made some money",
+      "startDate": "September 2017",
+      "endDate": "December 2018",
+      "id": "qEnSK9G7Eyuh-0Igx3Tn1"
+    }
+  ],
+  "educationList": [
+    {
+      "degree": "Software engineering",
+      "university": "University of Oottawa",
+      "details": "* Was really fun\n* Did goblin things\n* **Hello World!**",
+      "startDate": "September 2017",
+      "endDate": "December 2018",
+      "id": "18jrds9PLVjeEZLvLKhxJ"
+    }
+  ],
+  "projectsList": [
+    {
+      "title": "Some cool project",
+      "details": "* Built with python and java",
+      "id": "tajtp2Xh7fZTZI-K_Opg9"
+    }
+  ],
+  "skillsList": [
+    {
+      "name": "Python",
+      "level": 49,
+      "id": "s88fspO5kSix56mxjd9Bq"
+    }
+  ]
+}

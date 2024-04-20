@@ -1,0 +1,111 @@
+.deploy_navbar_container{
+  display: grid;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: white;
+  grid-template-columns: 1fr max-content 1fr;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.deploy_navbar_text{
+  align-self: center;
+  justify-self: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0 10px;
+}
+@mixin navbar-button {
+  display: grid;
+  padding-right: 50px;
+  width: 100%;
+  button{
+    display: grid;
+    width: 100%;
+    max-width: 300px;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 0.25em;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    box-shadow: 0 6px 10px 0 rgba(17, 17, 17, 0.06);
+    align-self: end;
+    color: white;
+    background: #64ca97;
+    border: 1px solid #64ca97;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+.deploy_navbar_next_button {
+  @include navbar-button;
+  button{
+    justify-self: center;
+  }
+}
+
+.deploy_navbar_back_button{
+  @include navbar-button;
+  margin-left: 50px;
+  button{
+    background-color: white;
+    justify-self: center;
+    color: black;
+    border: 1px solid #cacaca;
+    box-shadow: 0 6px 10px 0 rgba(17, 17, 17, 0.06);
+    &:hover{
+      background-color: #f9fbfa;
+    }
+  }
+}
+
+.deploy_navbar_next_button.disabled{
+  button{
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 900px) {
+  p{
+    font-size: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .deploy_navbar_back_button{
+    justify-self: center;
+    width: 100%;
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .deploy_navbar_container{
+    padding-top: 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content;
+    justify-items: center;
+    grid-row-gap: 10px;
+  }
+  .deploy_navbar_text{
+    grid-column: 1/3;
+  }
+  .deploy_navbar_back_button{
+    width: 100%;
+    grid-row: 2;
+    margin-left: 0;
+    padding-left: 50px;
+  }
+  .deploy_navbar_next_button{
+    grid-row: 2;
+  }
+}
+

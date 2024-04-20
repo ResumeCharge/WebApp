@@ -1,0 +1,158 @@
+.account_templates_list_content{
+  display: grid;
+  justify-content: center;
+}
+
+.account_templates_list{
+  list-style: none;
+  display: grid;
+  grid-template-columns:  repeat(3, minmax(350px, 500px));
+  column-gap: 5vw;
+  justify-items: center;
+  row-gap: min(25px, 5vh);
+  padding: 0 0 0 0 ;
+  .account_template_card_item{
+    display: grid;
+    text-align: center;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+    &:hover{
+      top: -10px;
+      .account_template_list_item_button_container{
+        display: grid;
+      }
+    }
+    .account_template_title{
+      justify-self: start;
+    }
+    img{
+      object-fit: cover;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
+      background: none;
+      padding: 10px;
+      &:hover{
+        visibility: visible;
+        cursor: pointer;
+      }
+    }
+    .account_template_list_item_button_container{
+      grid-template-columns: 1fr;
+      justify-items: center;
+      position: absolute;
+      top: 65%;
+      justify-self: center;
+      display: none;
+    }
+    .account_template_deploy{
+      justify-self: center;
+      font-family: Roboto;
+      font-size: 1rem;
+      font-weight: bold;
+      background: #64ca97;
+      min-width: 180px;
+      min-height: 50px;
+      color: white;
+      border-radius: .25em;
+      white-space: nowrap;
+      padding: 10px 20px 10px 20px;
+      box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+      border: none;
+      align-self: end;
+      margin: 10px 0;
+      transition: 0.3s ease-in-out;
+      /* "to left" / "to right" - affects initial color */
+      background: linear-gradient(to left, #64ca97 50%, #64ca57 50%) right;
+      background-size: 200%;
+      &:hover{
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        background-position: left;
+      }
+      &.disabled{
+        &:hover{
+          cursor: not-allowed;
+        }
+      }
+    }
+    .account_template_see_more {
+      justify-self: center;
+      font-family: Roboto;
+      font-size: 1rem;
+      font-weight: bold;
+      background: black;
+      color: white;
+      border-radius: .25em;
+      white-space: nowrap;
+      padding: 10px 20px 10px 20px;
+      box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+      border: none;
+      align-self: end;
+
+      margin: 10px 0;
+      transition: 0.3s ease-in-out;
+      &:hover{
+        cursor: pointer;
+        background: white;
+        color: black;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+.account_template_price_container{
+  p{
+    font-size: 24px;
+  }
+}
+
+.ant-spin.ant-spin-spinning{
+  background: none;
+  opacity: 100;
+}
+
+.account_template_sub_photo_container{
+  display: grid;
+  grid-template-rows: minmax(100px, 10vh) auto;
+  h1{
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+  p{
+    margin: 0;
+  }
+}
+
+
+.website_account_templates_error_message{
+  margin-bottom: 10px;
+}
+
+@media (min-width: 800px) {
+  .account_templates_list_content{
+    width: 100%;
+    padding: 0 50px 0 50px;
+  }
+}
+
+
+
+@media (max-width: 1800px) {
+  .account_templates_list {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .account_templates_list {
+    display: grid;
+    grid-template-columns:  1fr !important;
+  }
+}
+
+
+

@@ -1,0 +1,41 @@
+@import "src/assets/styles/global";
+
+.deployment_provider_card{
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 0.25em;
+  justify-items: center;
+  box-shadow: 0 6px 10px 0 rgba(17, 17, 17, 0.06);
+  padding: 50px 15px 50px 15px;
+  transition: 0.3s ease-in-out;
+  width: 350px;
+  height: 305px;
+  background-color: white;
+  border: 1px solid #dbdadb;
+  h1{
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  img{
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  button{
+    @include custom-button;
+    min-width: 200px;
+    width: 200px;
+    height: 40px;
+    font-size: 1rem;
+    padding: 0;
+  }
+
+}
+
+.deployment_provider_card_title{
+  margin-bottom: 25px;
+  overflow-wrap: break-word;
+}

@@ -1,0 +1,81 @@
+@mixin custom-button {
+  width: 100%;
+  min-width: 230px;
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #2ce080;
+  border: #2ce080 .125rem solid;
+  border-radius: .25em;
+  white-space: nowrap;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+  &:hover {
+    color: #03314b;
+    background-color: #20ba68;
+    border-color: #20ba68;
+    cursor: pointer;
+  }
+}
+
+.forms_ui_next_back_buttons{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, 250px));
+  justify-self: center;
+  column-gap: 3rem;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+
+.forms_ui_next_back_buttons{
+  button {
+    display: grid;
+    justify-self: center;
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: .25em;
+    white-space: nowrap;
+    padding: 5px 15px 5px 15px;
+    box-shadow: 0 6px 10px 0 rgba(17,17,17,.06);
+    align-self: end;
+    &:hover{
+      cursor: pointer;
+
+    }
+  }
+}
+
+
+.forms_ui_next_back_buttons_next_next{
+  @include custom-button;
+}
+
+.forms_ui_next_back_buttons_back{
+  color: #333;
+  background-color: transparent;
+  border: 1px solid #cacaca;
+  &:hover{
+    background-color: #f9fbfa;
+  }
+}
+
+@media (max-width: 800px) {
+  .forms_ui_next_back_buttons{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 -3px 7px 0 rgba(0,0,0,.12);
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    z-index: 101;
+  }
+}
