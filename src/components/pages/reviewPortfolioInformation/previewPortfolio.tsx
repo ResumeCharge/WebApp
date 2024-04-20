@@ -8,7 +8,6 @@ import { getProjects } from "../../../store/reducers/projectSlice";
 import { getSkills } from "../../../store/reducers/skillsSlice";
 import { getWorkExperience } from "../../../store/reducers/workExperienceSlice";
 import { Alert, Button } from "antd";
-import { seedRedux } from "../../../utilities/seedRedux";
 import Header from "../../navigation/header/header";
 import "./previewPortfolio.scss";
 import { getUser } from "../../../store/reducers/userSlice";
@@ -55,9 +54,6 @@ const PreviewPortfolio = () => {
   const [showSignUpSignInPrompt, setShowSignUpSignInPrompt] = useState(false);
   const modalRef = React.createRef<HTMLDivElement>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const seedStore = () => {
-    seedRedux();
-  };
 
   const navigate = useNavigate();
   const OnClickOutside = () => {
@@ -228,7 +224,6 @@ const PreviewPortfolio = () => {
           />
         ) : null}
         <div className={"preview_content_container"}>
-          <Button onClick={seedStore}>Seed</Button>
           <div className={"preview_title"}>
             <h1 className={"preview_page_title"}>Review</h1>
             <p className={"preview_page_title_subtext"}>
