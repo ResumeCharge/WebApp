@@ -17,7 +17,7 @@ faqItems = [
   {
     title: "Is Resume Charge Free?",
     content:
-      "Yes! ResumeCharge is currently offered as a free service to allow people to easily create " +
+      "Yes! ResumeCharge is offered as a free service to allow people to easily create " +
       "beautiful websites that highlight their skills and expertise.",
   },
   {
@@ -42,8 +42,8 @@ faqItems = [
   {
     title: "Is ResumeCharge open-source?",
     content:
-      "ResumeCharge is currently closed source, I am working on bringing all the code into the open-source realm." +
-      " Stay tuned for updates on this!",
+      "Yes! View our source code at <a href='https://github.com/orgs/ResumeCharge/repositories' target='_blank'>" +
+      "github.com/orgs/ResumeCharge/repositories</a>",
   },
   {
     title: "How Does Resume Charge Work?",
