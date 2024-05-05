@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# [ResumeCharge.com](https://resumecharge.com)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- ABOUT ResumeCharge -->
 
-## Available Scripts
+## About The Project
 
-In the project directory, you can run:
+ResumeCharge is a free and open-source website builder that allows you to easily create beautiful resume
+websites that are deployed directly to your GitHub account. ResumeCharge is an alternative to the large, established
+website
+builder companies that sell your data or lock you into contracts.
 
-### `npm start`
+### Why ResumeCharge?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ResumeCharge allows users to have total ownership over their resume websites. Unlike the established website builder
+companies,
+ResumeCharge doesn't lock you into contracts or make you agree to complicated terms of service. You own the
+source code and your data, forever. You can take your website with your wherever you go by downloading the source code
+and importing it to another platform of your choosing.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Who Created ResumeCharge and Why?
 
-### `npm test`
+ResumeCharge was created by me, Adam [adamlawson.dev](https://adamlawson.dev/)!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I'm a software developer based in Vancouver, Canada. I wanted to
+create an alternative to the big established website builder companies. In the website builder space it often feels like
+we have two options. Option 1 is using one of the large established website builders that requires you to sign
+restrictive terms of service, and locks you into a single platform. These companies may also collect and sell your data
+to 3rd parties for financial gain. Option 2 is using open-source tools like Jekyll or Hyde, along with a platform such
+as GitHub pages.
+This forces people without the technical knowledge, or time to fiddle with these tools, to use the big website builders
+in Option 1.
 
-### `npm run build`
+## ResumeCharge's goal is to combine the ease of use of the big website builders with the benefits of open-source software.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Java
+* Thymeleaf
+* Spring
+* MongoDb
+* AWS
+* And more!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The instructions below are not detailed/complete at the moment, I am working to write a detailed guide for setting up
+this project if you want to spin up your own instance. If you are interested in developing or running ResumeCharge
+locally please reach-out to me at [adam@adamlawson.dev](mailto:adam@adamlawson.dev).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This WebApp is the front-end of the [ResumeCharge.com](https://resumecharge.com) website. It can technically be run without
+the GeneratorService active, but no website will be created (they will show as pending). The UserService and 
+DeploymentService are critical to running the front-end, without them the user profile and resumes/deployments
+cannot be loaded.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+* NodeJs/NPM
+* [GeneratorService](https://github.com/ResumeCharge/GeneratorService) deployed and running
+* [DeploymentService](https://github.com/ResumeCharge/DeploymentService) deployed and running
+* [UserService](https://github.com/ResumeCharge/UserService) deployed and running
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ResumeCharge/WebApp.git
+   ```
+2. Install dependencies
+   ```sh
+   npm install
+   ```
+3. Run the web app
+   ```sh
+   npm run start
+   ```
