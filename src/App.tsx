@@ -20,6 +20,7 @@ import { ManageAccount } from "./components/pages/account/manageAccount/manageAc
 import { ForgotPassword } from "./components/pages/users/forgotPassword/forgotPassword";
 import faqItems from "./components/pages/FAQ/faq-items";
 import UserAlreadySignedInGuard from "./utilities/routeGuards/userAlreadySignedInGuard";
+import FirebaseAuth from "./components/pages/account/firebaseAuth/firebase-auth";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route element={<GuardedRoute />}>
             <Route path="/account" element={<Account />} />
+            <Route path="/account/firebase-auth" element={<FirebaseAuth />} />
             <Route path="/account/oauth" element={<Account />} />
             <Route path="/account/settings" element={<ManageAccount />} />
           </Route>
