@@ -4,13 +4,14 @@ import { API_PREFIX } from "../../app.constants";
 export interface IDbUser {
   userId: string;
   email: string;
-  isEmailVerified: string;
+  isEmailVerified: boolean;
   isActive: boolean;
   websiteIdentifier: string;
 }
 
 export interface IDbUserUpdate {
   websiteIdentifier?: string;
+  isEmailVerified?: boolean;
 }
 
 const USERS_ENDPOINT = API_PREFIX + "/users";

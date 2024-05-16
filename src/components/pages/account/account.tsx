@@ -25,8 +25,6 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { useAppSelector } from "../../../store/hooks";
-import { getUser } from "../../../store/reducers/userSlice";
 import AccountTemplates from "./templates/accountTemplates";
 
 interface IActiveComponent {
@@ -47,7 +45,6 @@ function Account() {
   const [searchParams] = useSearchParams();
   const [showFirstVisitDialog, setShowFirstVisitDialog] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);
-  const user = useAppSelector(getUser);
   const auth = getAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,8 +67,6 @@ function Account() {
       }
     };
     handleUserGithubAuth();
-
-    const activeItem = location.state?.activeItem;
     const previousPage = location.state?.previousPage;
     if (previousPage === "sign-up") {
       handleFirstPageViewFromSignUp();

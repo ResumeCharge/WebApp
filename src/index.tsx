@@ -8,11 +8,16 @@ import {
   browserLocalPersistence,
   getAuth,
   setPersistence,
+  User,
 } from "firebase/auth";
 import { createRoot } from "react-dom/client";
 import { store } from "./store/store";
 import { setUser } from "./store/reducers/userSlice";
-import { getUser } from "./microservices/user-service/userService.api";
+import {
+  getUser,
+  IDbUser,
+  updateUser,
+} from "./microservices/user-service/userService.api";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAPRJ7ZwygOhb9qas0cWmsKO_3FTM45xwI",
@@ -37,7 +42,7 @@ async function initializeFirestore() {
     auth.languageCode = "it";
     await setPersistence(auth, browserLocalPersistence);
     if (auth.currentUser) {
-      await setUserAttributesInRedux();
+      await setUserAttributesInRedux(auth.currentUser);
     }
     /*We have to wait for the auth state to change before we render to
      * ensure that the current auth state is loaded properly. Skipping
@@ -45,7 +50,7 @@ async function initializeFirestore() {
      * as it executes before the auth state has a chance to be set. */
     auth.onAuthStateChanged((user) => {
       if (user?.uid) {
-        setUserAttributesInRedux();
+        setUserAttributesInRedux(user);
       } else {
         store.dispatch(setUser({}));
       }
@@ -64,14 +69,27 @@ async function initializeFirestore() {
   }
 }
 
-async function setUserAttributesInRedux() {
-  const dbUser = await loadUserFromDatabase();
+async function setUserAttributesInRedux(user: User) {
+  const dbUser = await loadUserFromDatabase(user);
+
   store.dispatch(setUser(dbUser));
 }
 
-async function loadUserFromDatabase() {
+/**
+ * Reconcile differences between the firebase records and our db record.
+ * Firebase record is considered the source of truth.
+ * **/
+async function reconcileUserRecord(dbUser: IDbUser, firebaseUser: User) {
+  if (dbUser.isEmailVerified !== firebaseUser.emailVerified) {
+    dbUser.isEmailVerified = firebaseUser.emailVerified;
+    await updateUser({ isEmailVerified: true });
+  }
+}
+
+async function loadUserFromDatabase(firebaseUser: User) {
   const dbUser = await getUser();
   if (dbUser != null) {
+    await reconcileUserRecord(dbUser, firebaseUser);
     store.dispatch(setUser({ ...dbUser, isSignedIn: true }));
   } else {
     store.dispatch(setUser({ isSignedIn: false }));
