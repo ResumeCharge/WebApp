@@ -12,8 +12,11 @@ import WorkExperience from "./forms/workExperience/workExperience";
 import Education from "./forms/education/education";
 import Projects from "./forms/projects/projects";
 import Skills from "./forms/skills/skills";
-import { useAppSelector } from "../../../store/hooks";
-import { getResumeDetails } from "../../../store/reducers/resumeDetailsSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import {
+  getResumeDetails,
+  setCreatingNewResume,
+} from "../../../store/reducers/resumeDetailsSlice";
 import { getUser } from "../../../store/reducers/userSlice";
 import { clearResumeFromStore } from "../../../utilities/storeHelper";
 import { ISection } from "./createPortfolio.contants";
@@ -22,6 +25,7 @@ import AboutMe from "./forms/aboutMe/aboutMe";
 import Nickname from "./forms/nickname/nickname";
 
 function CreatePortfolio() {
+  const dispatch = useAppDispatch();
   const [editing, setEditing] = useState(false);
   const [activeSection, setActiveSection] = useState(sectionIds.NICKNAME);
   const [sectionsMap, setSectionsMap] = useState<Map<string, ISection>>(
@@ -269,6 +273,7 @@ function CreatePortfolio() {
     let currentSection = sectionsMap.get(currentSectionId);
     if (currentSection === undefined) return;
     if (currentSection.isFinalSection) {
+      dispatch(setCreatingNewResume(true));
       navigate("/createportfolio/review");
       return;
     }

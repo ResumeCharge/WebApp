@@ -20,7 +20,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 interface IProps {
   title: string;
-  content: string;
+  content: any;
   open: boolean;
   onClose(): void;
 }
@@ -54,9 +54,7 @@ export default function GenericAcknowledgeDialog(props: IProps) {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>
-          <Typography gutterBottom>{props.content}</Typography>
-        </DialogContent>
+        <DialogContent dividers>{props.content}</DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
             Ok

@@ -6,6 +6,7 @@ const initialState: IResumeDetails = {
   nickname: "",
   _id: undefined,
   completed: false,
+  creatingNewResume: false,
 };
 
 export const ResumeDetailsSlice = createSlice({
@@ -15,8 +16,13 @@ export const ResumeDetailsSlice = createSlice({
     setResumeDetails(state, action) {
       return action.payload;
     },
+    setCreatingNewResume(state, action: PayloadAction<boolean>) {
+      return {
+        ...state,
+        creatingNewResume: action.payload,
+      };
+    },
     setResumeNickname(state, action: PayloadAction<string>) {
-      console.log("NICKNAME " + action.payload);
       return {
         ...state,
         nickname: action.payload,
@@ -28,8 +34,12 @@ export const ResumeDetailsSlice = createSlice({
   },
 });
 
-export const { setResumeDetails, reset, setResumeNickname } =
-  ResumeDetailsSlice.actions;
+export const {
+  setResumeDetails,
+  reset,
+  setResumeNickname,
+  setCreatingNewResume,
+} = ResumeDetailsSlice.actions;
 
 export const getResumeDetails = (state: RootState) =>
   state.ResumeDetailsReducer;
