@@ -9,7 +9,7 @@ import {
 } from "../../../../microservices/deployment-service/deploymentService.api";
 import "./myResumes.scss";
 import addResumeIcon from "../../../../assets/images/myresumes/add-resume-icon.svg";
-import { getAuth } from "firebase/auth";
+import { getAuth, sendEmailVerification, User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -21,10 +21,11 @@ import {
 import GenericAcknowledgeDialog from "./genericAcknowledgeDialog";
 import { store } from "../../../../store/store";
 import { ResumeDetailsSlice } from "../../../../store/reducers/resumeDetailsSlice";
-import { useAppSelector } from "../../../../store/hooks";
-import { getUser } from "../../../../store/reducers/userSlice";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 function MyResumes() {
+  const VERIFY_EMAIL_TOO_MANY_REQUESTS_ERR = "auth/too-many-requests";
   const DELETE_RESUME_ERROR = "Error deleting resume, please try again.";
   const RESUME_ACTION_ERROR_GENERIC =
     "Something went wrong, please refresh the page and try again.";
@@ -42,7 +43,6 @@ function MyResumes() {
     Array<IGetResumesForUserResponse>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [deploymentLoading, setDeploymentLoading] = useState(false);
   const [showGenericAcknowledgeDialog, setShowGenericAcknowledgeDialog] =
     useState(false);
   const [genericAcknowledgeDialogTitle, setShowGenericAcknowledgeDialogTitle] =
@@ -50,8 +50,7 @@ function MyResumes() {
   const [
     genericAcknowledgeDialogContent,
     setShowGenericAcknowledgeDialogContent,
-  ] = useState("");
-  const user = useAppSelector(getUser);
+  ] = useState<any>(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -101,14 +100,41 @@ function MyResumes() {
   };
 
   const handleResumeDeploy = async (resume: IGetResumesForUserResponse) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (!user?.emailVerified) {
+      setShowGenericAcknowledgeDialog(true);
+      setShowGenericAcknowledgeDialogTitle("Verify your email");
+      setShowGenericAcknowledgeDialogContent(
+        <div>
+          <Typography gutterBottom>
+            Verify your email before deploying your website. Click the verify
+            button to have a verification email send to your email. Follow the
+            link in the email to verify your email address.
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={() => {
+              sendVerificationEmailToUser(user!);
+              setShowGenericAcknowledgeDialog(false);
+            }}
+          >
+            Verify Email
+          </Button>
+        </div>
+      );
+      return;
+    }
     const deployments = await getDeployments();
     const status = deployments[0]?.status.toUpperCase() ?? SUCCESSFUL;
     if (status !== SUCCESSFUL && status !== FAILED && status !== CANCELLED) {
       setShowGenericAcknowledgeDialog(true);
       setShowGenericAcknowledgeDialogTitle("Deployment in progress");
       setShowGenericAcknowledgeDialogContent(
-        "You already have a deployment in progress. Please wait for the\n" +
-          "deployment to complete or cancel it before starting a new one."
+        <Typography gutterBottom>
+          You already have a deployment in progress. Please wait for the
+          deployment to complete or cancel it before starting a new one
+        </Typography>
       );
       return;
     }
@@ -120,12 +146,25 @@ function MyResumes() {
       })
     );
     navigate(`/website/deploy`);
-    setDeploymentLoading(true);
   };
 
   const handleException = (message: string) => {
     setHasResumeActionError(true);
     setResumeActionError(message);
+  };
+
+  const sendVerificationEmailToUser = async (user: User) => {
+    try {
+      await sendEmailVerification(user);
+    } catch (e) {
+      if (e instanceof Error) {
+        if (e.message.includes(VERIFY_EMAIL_TOO_MANY_REQUESTS_ERR)) {
+          alert(
+            "Too many requests, please wait before requesting a new verification email."
+          );
+        }
+      }
+    }
   };
 
   const getLoadingTemplate = () => {

@@ -39,7 +39,7 @@ async function initializeFirestore() {
   try {
     initializeApp(firebaseConfig);
     const auth = getAuth();
-    auth.languageCode = "it";
+    auth.languageCode = "en";
     await setPersistence(auth, browserLocalPersistence);
     if (auth.currentUser) {
       await setUserAttributesInRedux(auth.currentUser);

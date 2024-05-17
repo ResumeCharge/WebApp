@@ -73,9 +73,10 @@ const PreviewPortfolio = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (
-      !resumeDetails._id ||
-      !resumeDetails.nickname ||
-      !resumeDetails.completed
+      (!resumeDetails._id ||
+        !resumeDetails.nickname ||
+        !resumeDetails.completed) &&
+      !resumeDetails.creatingNewResume
     ) {
       setHasMissingResumeError(true);
     }

@@ -88,6 +88,7 @@ export interface IResumeDetails {
   nickname: string;
   _id?: string;
   completed?: boolean;
+  creatingNewResume?: boolean;
 }
 
 export interface IUser extends Partial<User> {
