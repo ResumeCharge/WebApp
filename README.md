@@ -46,6 +46,3 @@ in Option 1.
 ## Getting Started
 
 # Follow the instructions in https://github.com/ResumeCharge/standalone. This will deploy the entire ResumeCharge stack using Docker.
-
-   npm run start
-   ```
