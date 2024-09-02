@@ -1,5 +1,4 @@
 import { IResume, IResumeDetails } from "../../store/reducers/interfaces";
-import { getAuth } from "firebase/auth";
 import { store } from "../../store/store";
 import { PersonalDetailsSlice } from "../../store/reducers/personalDetailsSlice";
 import { CareerSummarySlice } from "../../store/reducers/careerSummarySlice";
@@ -11,25 +10,21 @@ import { WorkExperienceSlice } from "../../store/reducers/workExperienceSlice";
 import { ResumeDetailsSlice } from "../../store/reducers/resumeDetailsSlice";
 import { IDeployment } from "./models/deployment.model";
 import { AboutMeSlice } from "../../store/reducers/aboutMeSlice";
-import { API_PREFIX } from "../../app.constants";
+import { DEPLOYMENTS_SERVICE_API, USER_ID } from "../../app.constants";
 
 const GET_SUCCESS = 200;
 const DELETE_SUCCESS = 200;
 const POST_SUCCESS = 201;
 const PATCH_SUCCESS = 200;
-const TEMPLATES_ENDPOINT = API_PREFIX + "/templates";
-const RESUMES_ENDPOINT = API_PREFIX + "/resumes";
-const DEPLOYMENTS_ENDPOINT = API_PREFIX + "/deployments";
+const TEMPLATES_ENDPOINT = DEPLOYMENTS_SERVICE_API + "/templates";
+const RESUMES_ENDPOINT = DEPLOYMENTS_SERVICE_API + "/resumes";
+const DEPLOYMENTS_ENDPOINT = DEPLOYMENTS_SERVICE_API + "/deployments";
 
 export const deployWebsite = async (deployment: IDeployment) => {
-  const user = getActiveUser();
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
   const response = await fetch(DEPLOYMENTS_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
     body: JSON.stringify(deployment),
   });
@@ -42,15 +37,10 @@ export const deployWebsite = async (deployment: IDeployment) => {
 };
 
 export const getResumesForUser = async () => {
-  const user = getActiveUser();
-  const userId = user.uid;
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
-  const response = await fetch(`${RESUMES_ENDPOINT}/user/${userId}`, {
+  const response = await fetch(`${RESUMES_ENDPOINT}/user/${USER_ID}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
   });
   if (response.status === GET_SUCCESS) {
@@ -61,14 +51,10 @@ export const getResumesForUser = async () => {
 };
 
 export const deleteUserResume = async (resumeId: string) => {
-  const user = getActiveUser();
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
   const response = await fetch(`${RESUMES_ENDPOINT}/${resumeId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
   });
   if (response.status === GET_SUCCESS) {
@@ -79,15 +65,10 @@ export const deleteUserResume = async (resumeId: string) => {
 };
 
 export const getDeploymentsForUser = async () => {
-  const user = getActiveUser();
-  const userId = user.uid;
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
-  const response = await fetch(`${DEPLOYMENTS_ENDPOINT}/user/${userId}`, {
+  const response = await fetch(`${DEPLOYMENTS_ENDPOINT}/user/${USER_ID}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
   });
   if (response.status === GET_SUCCESS) {
@@ -98,14 +79,10 @@ export const getDeploymentsForUser = async () => {
 };
 
 export const getDeploymentForUser = async (deploymentId: string) => {
-  const user = getActiveUser();
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
   const response = await fetch(`${DEPLOYMENTS_ENDPOINT}/${deploymentId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
   });
   if (response.status === GET_SUCCESS) {
@@ -116,14 +93,10 @@ export const getDeploymentForUser = async (deploymentId: string) => {
 };
 
 export const saveResumeToDatabase = async (resume: IResume) => {
-  const user = getActiveUser();
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
   const response = await fetch(RESUMES_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
     body: JSON.stringify(resume),
   });
@@ -135,14 +108,10 @@ export const saveResumeToDatabase = async (resume: IResume) => {
 };
 
 export const updateResumeInDatabase = async (resume: IResume) => {
-  const user = getActiveUser();
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
   const response = await fetch(`${RESUMES_ENDPOINT}/${resume._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: tokenHeaderValue,
     },
     body: JSON.stringify(resume),
   });
@@ -213,34 +182,18 @@ export const getAvailableTemplates = async (): Promise<
 };
 
 export const cancelDeployment = async (deploymentId: string): Promise<void> => {
-  const user = getActiveUser();
-  const token = await user.getIdToken();
-  const tokenHeaderValue = getBearerTokenHeader(token);
   const response = await fetch(
     `${DEPLOYMENTS_ENDPOINT}/${deploymentId}/cancel`,
     {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: tokenHeaderValue,
       },
     }
   );
   if (response.status !== DELETE_SUCCESS) {
     throw new Error();
   }
-};
-
-const getActiveUser = () => {
-  const auth = getAuth();
-  if (!auth.currentUser) {
-    throw new Error("No active user, unable to getUser");
-  }
-  return auth.currentUser;
-};
-
-const getBearerTokenHeader = (token: string) => {
-  return "Bearer " + token;
 };
 
 export interface IGetResumesForUserResponse extends IResume {

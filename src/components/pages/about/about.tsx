@@ -7,6 +7,7 @@ import Celebrate from "../../../assets/images/about/website-deployed.svg";
 import "./about.scss";
 import confetti from "canvas-confetti";
 import Footer from "../../navigation/footer/footer";
+import { useNavigate } from "react-router-dom";
 
 type FadeInSectionProps = {
   children: JSX.Element;
@@ -39,6 +40,7 @@ function FadeInSection(props: FadeInSectionProps) {
 }
 
 function About() {
+  const navigate = useNavigate();
   return (
     <div>
       <div className={"about_container"}>
@@ -57,7 +59,7 @@ function About() {
             much about you, say more by having your skills and talents on the
             web for the world to see.
           </p>
-          <button>Create My Website Now</button>
+          <button onClick={() => navigate("/")}>Create My Website Now</button>
         </div>
         <div className={"about_content_subsection_tiles"}>
           <FadeInSection>

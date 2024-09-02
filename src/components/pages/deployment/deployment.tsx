@@ -5,7 +5,6 @@ import ChooseTemplate from "./components/chooseTemplate/chooseTemplate";
 import DeploymentOptions from "./components/deploymentOptions/deploymentOptions";
 import { ITemplate } from "../account/templates/templateItems";
 import "./deployment.scss";
-import { getAuth } from "firebase/auth";
 import { deployWebsite } from "../../../microservices/deployment-service/deploymentService.api";
 import { IDeployment } from "../../../microservices/deployment-service/models/deployment.model";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +21,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { USER_ID } from "../../../app.constants";
 
 export interface IHandleDeployWebsite {
   title: string;
@@ -57,7 +57,6 @@ export default function Deployment() {
   const [hasError, setHasError] = useState(false);
   const resumeDetails = useAppSelector(getResumeDetails);
   const user = useAppSelector(getUser);
-  const auth = getAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,11 +106,6 @@ export default function Deployment() {
     deploymentOptions: IHandleDeployWebsite
   ) => {
     try {
-      const userId = auth.currentUser?.uid;
-      if (!userId) {
-        alert("User not found");
-        return;
-      }
       if (!template || !resumeDetails._id) {
         console.error("No resume or templateId found");
         return;
@@ -122,7 +116,7 @@ export default function Deployment() {
       }
 
       const deployment: IDeployment = {
-        userId,
+        userId: USER_ID,
         resumeId: resumeDetails._id,
         templateId: template.key,
         deploymentProvider: deploymentProvider,
@@ -186,7 +180,7 @@ export default function Deployment() {
           {showChooseTemplateComponent ? (
             <ChooseTemplate
               onComplete={handleChooseTemplateComplete}
-              userId={auth.currentUser?.uid ?? ""}
+              userId={USER_ID}
               templates={templates}
               onBack={handleChooseTemplateOnBack}
             />

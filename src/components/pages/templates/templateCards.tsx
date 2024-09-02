@@ -25,7 +25,7 @@ interface ITemplateCardsProps {
   isDeploying?: boolean;
 }
 
-export const getWebsiteTemplateCards = async (
+const getWebsiteTemplateCards = async (
   props: IGetWebsiteTemplateCardsProps
 ) => {
   const handleOnDeploy = (templateId: string) => {
@@ -119,7 +119,7 @@ export const getWebsiteTemplateCards = async (
   );
 };
 
-export const getWebsiteTemplatesSkeletons = () => {
+const getWebsiteTemplatesSkeletons = () => {
   const skeletons = 6;
   return (
     <div className={"templates_list_content_skeleton"}>

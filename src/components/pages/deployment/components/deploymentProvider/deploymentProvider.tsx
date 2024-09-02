@@ -2,7 +2,6 @@ import "./deploymentProvider.scss";
 import DeploymentProviderCard from "./deploymentProviderCard";
 import GitHubCat from "../../../../../assets/images/common/github-cat.svg";
 import React, { useState } from "react";
-import DeploymentProviderNullDialog from "../../UI/deploymentProviderNullDialog";
 import { hasValidGithubToken } from "../../../../../microservices/user-service/userService.api";
 import DeploymentProviderConnectToGithubDialog from "../../UI/deploymentProviderConnectToGithubDialog";
 
@@ -11,8 +10,7 @@ interface IProps {
 }
 
 export default function DeploymentProvider(props: IProps) {
-  const [showWebsiteIdentifierDialog, setShowWebsiteIdentifierDialog] =
-    useState(false);
+  useState(false);
   const [showGithubTokenDialog, setShowGithubTokenDialog] = useState(false);
 
   const onNext = async (provider: string) => {
@@ -30,12 +28,6 @@ export default function DeploymentProvider(props: IProps) {
 
   return (
     <div className={"deployment_provider_container"}>
-      {showWebsiteIdentifierDialog ? (
-        <DeploymentProviderNullDialog
-          open={showWebsiteIdentifierDialog}
-          onClose={() => setShowWebsiteIdentifierDialog(false)}
-        />
-      ) : null}
       {showGithubTokenDialog ? (
         <DeploymentProviderConnectToGithubDialog
           open={showGithubTokenDialog}

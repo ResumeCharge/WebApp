@@ -7,14 +7,6 @@ let faqItems: FaqItem[];
 
 faqItems = [
   {
-    title: "Why Resume Charge?",
-    content:
-      "As a job seeker your time is limited, we get that." +
-      " You want a website that looks great and helps you stand out without spending hours using website creation tools." +
-      " Resume Charge is the fastest way to turn your resume into a website, we're talking minutes, not hours." +
-      " Privacy and ownership are at the core of what we do, we will never sell your data to anyone ever.",
-  },
-  {
     title: "Is Resume Charge Free?",
     content:
       "Yes! ResumeCharge is offered as a free service to allow people to easily create " +
@@ -30,14 +22,23 @@ faqItems = [
   {
     title: "Will ResumeCharge always be free?",
     content:
-      "I hope to always offer some version of ResumeCharge that is free to use. There may be paid features " +
-      " added at some point, but the core product and functionality will always be free.",
+      "The standalone alone version of ResumeCharge (that you are using right now!) will always be free. " +
+      "I may decide to offer a hosted version with some paid features down the line, but the features in the initial " +
+      "release of the standalone will always be free.",
+  },
+  {
+    title: "Is my GitHub Access Token Secure?",
+    content:
+      "Yes, your token is encrypted and stored in the local Postgres database running in an isolated Docker container." +
+      " However, we do not recommend exposing " +
+      "the ResumeCharge instance to the public internet. The standalone version of ResumeCharge is designed to run " +
+      "in an isolated Docker environment that is not accessible from the public internet.",
   },
   {
     title: "Do You Sell My Data?",
     content:
-      "Nope, and we will never will. Your data stays with ResumeCharge and doesn't get sold or shared " +
-      "with anyone else. No ads, and no tracking.",
+      "Nope, the standalone version of ResumeCharge runs entirely on your local machine, the only calls to external " +
+      "services are calls to the GitHub API for deploying your GitHub pages website.",
   },
   {
     title: "Is ResumeCharge open-source?",
@@ -72,13 +73,6 @@ faqItems = [
     content:
       "Custom domains are currently supported for GitHub deployments: " +
       "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages ",
-  },
-  {
-    title: "Why do I need a resume website?",
-    content:
-      "A resume website helps you stand out from the crowd and showcase your unique set of skills." +
-      " A resume can only say so much about your projects, work experience, and education. Having a website" +
-      " allows you to showcase your value in greater depth.",
   },
   {
     title: "Do I really own the website I create with Resume Charge?",

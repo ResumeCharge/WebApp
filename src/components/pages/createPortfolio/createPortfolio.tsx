@@ -17,7 +17,6 @@ import {
   getResumeDetails,
   setCreatingNewResume,
 } from "../../../store/reducers/resumeDetailsSlice";
-import { getUser } from "../../../store/reducers/userSlice";
 import { clearResumeFromStore } from "../../../utilities/storeHelper";
 import { ISection } from "./createPortfolio.contants";
 import { sectionIds } from "./constants";
@@ -202,7 +201,6 @@ function CreatePortfolio() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const resumeDetails = useAppSelector(getResumeDetails);
-  const user = useAppSelector(getUser);
   const navigate = useNavigate();
   const OnPageHideEvent = () => {
     useEffect(() => {
@@ -226,7 +224,7 @@ function CreatePortfolio() {
     const isEditing = searchParams.get("editing");
     if (isEditing === "true") {
       if (!resumeDetails.completed) {
-        user.isSignedIn ? navigate("/account") : navigate("/createportfolio");
+        navigate("/account");
       }
       setAllSectionsActive();
       setEditing(true);
@@ -234,14 +232,7 @@ function CreatePortfolio() {
       clearResumeFromStore();
       setIsLoading(false);
     }
-  }, [
-    editing,
-    navigate,
-    resumeDetails.completed,
-    searchParams,
-    isLoading,
-    user.isSignedIn,
-  ]);
+  }, [editing, navigate, resumeDetails.completed, searchParams, isLoading]);
 
   const setAllSectionsActive = () => {
     const newSectionsMap = new Map<string, ISection>();

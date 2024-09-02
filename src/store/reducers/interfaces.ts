@@ -93,6 +93,4 @@ export interface IResumeDetails {
 
 export interface IUser extends Partial<User> {
   userId: string;
-  isSignedIn: boolean;
-  websiteIdentifier: string | null;
 }

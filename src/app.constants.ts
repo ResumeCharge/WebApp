@@ -1,4 +1,5 @@
-const API_PREFIX = "http://localhost/api";
-//const API_PREFIX = "https://api.resumecharge.com/api";
+const USERS_SERVICE_API = `http://${process.env.REACT_APP_USER_SERVICE_HOST}:${process.env.REACT_APP_USER_SERVICE_PORT}/api`;
+const DEPLOYMENTS_SERVICE_API = `http://${process.env.REACT_APP_DEPLOYMENT_SERVICE_HOST}:${process.env.REACT_APP_DEPLOYMENT_SERVICE_PORT}/api`;
+const USER_ID = "1";
 
-export { API_PREFIX };
+export { USERS_SERVICE_API, DEPLOYMENTS_SERVICE_API, USER_ID };

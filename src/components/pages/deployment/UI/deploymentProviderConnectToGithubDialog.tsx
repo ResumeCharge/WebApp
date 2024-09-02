@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
@@ -8,17 +9,8 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
-import * as Yup from "yup";
 import "./deploymentProviderConnectToGithubDialog.scss";
-import { useState } from "react";
-import {
-  getUser,
-  IDbUserUpdate,
-  updateUser,
-} from "../../../../microservices/user-service/userService.api";
-import { store } from "../../../../store/store";
-import { setUser } from "../../../../store/reducers/userSlice";
-import { getGithubAuthEndpoint } from "../../../../utilities/github/githubTokenHelper";
+import { useNavigate } from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -31,46 +23,19 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 interface IProps {
   open: boolean;
+
   onClose(): void;
 }
 
 export default function DeploymentProviderConnectToGithubDialog(props: IProps) {
   const [open, setOpen] = useState(props.open);
-  const [loading, setIsLoading] = useState(false);
-  const [nicknameError, setNicknameError] = useState<string | undefined>(
-    undefined
-  );
-  const nicknameRef = React.useRef<HTMLInputElement>(null);
-  const stringSchema = Yup.object({
-    value: Yup.string()
-      .max(50, "Must be 50 characters or less")
-      .required("Required"),
-  });
+
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setOpen(false);
     props.onClose();
   };
-
-  const connectGitHubAccount = async () => {
-    const githubAuthEndpoint = getGithubAuthEndpoint();
-    window.location.href = githubAuthEndpoint;
-  };
-
-  const updateWebsiteIdentifier = async (websiteIdentifier: string) => {
-    const userUpdate: IDbUserUpdate = {
-      websiteIdentifier,
-    };
-    const user = await updateUser(userUpdate);
-    await loadUserFromDatabase();
-  };
-
-  async function loadUserFromDatabase() {
-    const dbUser = await getUser();
-    if (dbUser != null) {
-      store.dispatch(setUser({ ...dbUser }));
-    }
-  }
 
   return (
     <React.Fragment>
@@ -80,7 +45,7 @@ export default function DeploymentProviderConnectToGithubDialog(props: IProps) {
         open={open}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Connect to GitHub
+          Set GitHub Token
         </DialogTitle>
         <IconButton
           aria-label="close"
@@ -96,20 +61,32 @@ export default function DeploymentProviderConnectToGithubDialog(props: IProps) {
         </IconButton>
         <DialogContent dividers>
           <Typography gutterBottom>
-            To deploy your website to GitHub you need to first link your GitHub
-            Account
+            To deploy your website to GitHub you need to first set your GitHub
+            access token.
           </Typography>
           <Typography fontWeight={"bold"} gutterBottom>
-            Click the "Go to Github" button to connect your Github account. You
-            will return to ResumeCharge when finished.
+            Go to GitHub to generate a personal access token{" "}
+            <a
+              target={"_blank"}
+              href={
+                "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+              }
+            >
+              link
+            </a>{" "}
+            and save that token in ResumeCharge.
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color={"info"}>
             Cancel
           </Button>
-          <Button autoFocus onClick={connectGitHubAccount} color={"success"}>
-            Connect Github Account
+          <Button
+            autoFocus
+            onClick={() => navigate("/account/settings")}
+            color={"success"}
+          >
+            Set GitHub Token
           </Button>
         </DialogActions>
       </BootstrapDialog>

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./header.scss";
-import { signOut as googleAuthSignOut } from "../../../utilities/auth/googleAuthHelper";
 import { useAppSelector } from "../../../store/hooks";
-import { getUser, setIsUserSignedIn } from "../../../store/reducers/userSlice";
+import { getUser } from "../../../store/reducers/userSlice";
 import { store } from "../../../store/store";
 import logo from "../../../assets/images/logo-no-name.png";
 import { getMenu } from "../collapsibleMenu/menuItems";
@@ -67,15 +66,9 @@ function Header(props: IHeaderProps) {
         onClick={toggleShowDrawer(false)}
         onKeyDown={toggleShowDrawer(false)}
       >
-        {getMenu(handleMenuButtonClick, user.isSignedIn)}
+        {getMenu(handleMenuButtonClick)}
       </Box>
     );
-  };
-
-  const signOut = async () => {
-    await googleAuthSignOut();
-    store.dispatch(setIsUserSignedIn(false));
-    navigate("/");
   };
 
   return (
@@ -92,6 +85,7 @@ function Header(props: IHeaderProps) {
           onClick={() => handleNavigation("/")}
         >
           ResumeCharge
+          <br />
         </p>
       </div>
       <div className={"header_container_small"}>
@@ -142,19 +136,6 @@ function Header(props: IHeaderProps) {
         >
           FAQ
         </NavLink>
-        {user.isSignedIn ? (
-          <p className={"navlink"} onClick={() => signOut()}>
-            SignOut
-          </p>
-        ) : (
-          <NavLink
-            to={"/signin"}
-            className={"navlink"}
-            onClick={() => handleNavigation("/signin")}
-          >
-            Login
-          </NavLink>
-        )}
       </div>
     </div>
   );

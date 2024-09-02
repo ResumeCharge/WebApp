@@ -6,7 +6,6 @@ import {
   IGetWebsitesForUserResponse,
 } from "../../../../microservices/deployment-service/deploymentService.api";
 import "./myWebsites.scss";
-import { getAuth } from "firebase/auth";
 import { Progress, Spin } from "antd";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
@@ -15,7 +14,6 @@ interface IMyWebsitesProps {
 }
 
 function MyWebsites(props: IMyWebsitesProps) {
-  const auth = getAuth();
   const [userWebsites, setUserWebsites] = useState<
     Array<IGetWebsitesForUserResponse>
   >([]);
@@ -40,7 +38,7 @@ function MyWebsites(props: IMyWebsitesProps) {
 
   useEffect(() => {
     getDeployments();
-  }, [auth]);
+  }, []);
 
   const handleCancelWebsiteRequest = async (deploymentId: string) => {
     await cancelDeployment(deploymentId);

@@ -16,20 +16,13 @@ function Footer(props: IProps) {
       className={`${props.className ? props.className : ""} footer-container`}
     >
       <div className={"footer-column"}>
-        <h1>Company</h1>
+        <h1>ResumeCharge</h1>
         <a onClick={() => navigate("/about")}>About</a>
         <a onClick={() => navigate("/faq")}>Frequently Asked Questions</a>
       </div>
       <div className={"footer-column"}>
         <h1>Features</h1>
         <a onClick={() => navigate("/templates")}>Templates</a>
-        {props.elementOverrides?.get(SIGNUP_KEY) ?? true ? (
-          <a onClick={() => navigate("/signup")}>Sign Up</a>
-        ) : null}
-      </div>
-      <div className={"footer-column"}>
-        <h1>Support</h1>
-        <a onClick={() => navigate("/contact-us")}>Contact Us</a>
       </div>
     </div>
   );

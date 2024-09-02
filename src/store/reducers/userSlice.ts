@@ -1,14 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import { IUser } from "./interfaces";
+import { USER_ID } from "../../app.constants";
 
 const initialState: IUser = {
-  isSignedIn: false,
-  userId: "",
+  userId: USER_ID,
   createdAt: -1,
   lastUpdatedAt: -1,
-  email: "",
-  websiteIdentifier: null,
 };
 
 export const UserSlice = createSlice({
@@ -21,16 +19,10 @@ export const UserSlice = createSlice({
     resetUser() {
       return initialState;
     },
-    setIsUserSignedIn(state, action) {
-      return {
-        ...state,
-        isSignedIn: action.payload,
-      };
-    },
   },
 });
 
-export const { setUser, resetUser, setIsUserSignedIn } = UserSlice.actions;
+export const { setUser, resetUser } = UserSlice.actions;
 
 export const getUser = (state: RootState) => state.UserReducer;
 export const getUserId = (state: RootState) => state.UserReducer.userId;

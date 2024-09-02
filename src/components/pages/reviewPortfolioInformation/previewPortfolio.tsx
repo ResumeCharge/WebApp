@@ -17,10 +17,7 @@ import {
   saveResumeToDatabase,
   updateResumeInDatabase,
 } from "../../../microservices/deployment-service/deploymentService.api";
-import { SignUpCard } from "../users/signUp/signUpCard";
-import { getAuth } from "firebase/auth";
 import { getResumeDetails } from "../../../store/reducers/resumeDetailsSlice";
-import SignInCard from "../users/signIn/signInCard";
 import { IResume } from "../../../store/reducers/interfaces";
 import { getAboutMe } from "../../../store/reducers/aboutMeSlice";
 import {
@@ -37,6 +34,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
 import { TransitionProps } from "@mui/material/transitions";
 import Slide from "@mui/material/Slide";
+import { seedRedux } from "../../../utilities/seedRedux";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -50,7 +48,6 @@ const Transition = React.forwardRef(function Transition(
 const PreviewPortfolio = () => {
   const VIEW_PARAM = "mode";
   const VIEW_MODE_VALUE = "view";
-  const auth = getAuth();
   const personalDetails = useAppSelector(getPersonalInformation);
   const aboutMe = useAppSelector(getAboutMe);
   const extraLinks = useAppSelector(getExtraLinks);
@@ -78,7 +75,7 @@ const PreviewPortfolio = () => {
         !resumeDetails.completed) &&
       !resumeDetails.creatingNewResume
     ) {
-      setHasMissingResumeError(true);
+      // setHasMissingResumeError(true);
     }
   }, []);
 
@@ -124,12 +121,6 @@ const PreviewPortfolio = () => {
   };
 
   const saveResume = async () => {
-    if (!auth.currentUser) {
-      setIsSignUpSignInActive(true);
-      setShowSignUpSignInPrompt(true);
-      return;
-    }
-
     setHasError(false);
     setIsLoading(true);
     const resume = getResumeFromStore();
@@ -221,24 +212,13 @@ const PreviewPortfolio = () => {
       </button>
     );
   };
+  const seedStore = () => {
+    seedRedux();
+  };
 
   return (
     <div className={"preview_overlay_container"}>
-      {showSignUpOverlay ? (
-        <div className={"preview_signup_overlay"} ref={modalRef}>
-          <SignUpCard onSuccess={handleSignUpSuccess} />
-        </div>
-      ) : null}
-      {showSignInOverlay ? (
-        <div className={"preview_signup_overlay"} ref={modalRef}>
-          <SignInCard onSuccess={handleSignInSuccess} />
-        </div>
-      ) : null}
-      {showSignUpSignInPrompt ? (
-        <div className={"preview_signup_signin_prompt_overlay"} ref={modalRef}>
-          {getSignUpSignInPrompt()}
-        </div>
-      ) : null}
+      <Button onClick={seedStore}>Seed</Button>
       <div
         className={"preview_container"}
         style={isSignUpSignInActive ? { pointerEvents: "none" } : undefined}
@@ -266,7 +246,7 @@ const PreviewPortfolio = () => {
         </Dialog>
         {hasError ? (
           <Alert
-            message="Error saving resume, please try again later or contact support if the error persists"
+            message="Error saving resume, please try again later or raise an issue on GitHub if the error persists"
             className={"preview_error_message"}
             showIcon
             type="error"

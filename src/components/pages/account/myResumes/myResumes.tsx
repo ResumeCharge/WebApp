@@ -9,7 +9,6 @@ import {
 } from "../../../../microservices/deployment-service/deploymentService.api";
 import "./myResumes.scss";
 import addResumeIcon from "../../../../assets/images/myresumes/add-resume-icon.svg";
-import { getAuth, sendEmailVerification, User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -22,7 +21,6 @@ import GenericAcknowledgeDialog from "./genericAcknowledgeDialog";
 import { store } from "../../../../store/store";
 import { ResumeDetailsSlice } from "../../../../store/reducers/resumeDetailsSlice";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 function MyResumes() {
   const VERIFY_EMAIL_TOO_MANY_REQUESTS_ERR = "auth/too-many-requests";
@@ -33,7 +31,6 @@ function MyResumes() {
     "Unable to retrieve saved resumes, please refresh the page and try again.";
   const EDIT_RESUME_URL = "/createportfolio?editing=true";
   const VIEW_RESUME_URL = "/createportfolio/review?mode=view";
-  const auth = getAuth();
   const navigate = useNavigate();
   const [hasResumeActionError, setHasResumeActionError] = useState(false);
   const [resumeActionError, setResumeActionError] = useState(
@@ -64,7 +61,7 @@ function MyResumes() {
       setIsLoading(false);
     };
     getUserResumesList();
-  }, [auth, navigate]);
+  }, [navigate]);
 
   const deleteResume = async (resumeId: string) => {
     setHasResumeActionError(false);
@@ -100,31 +97,6 @@ function MyResumes() {
   };
 
   const handleResumeDeploy = async (resume: IGetResumesForUserResponse) => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (!user?.emailVerified) {
-      setShowGenericAcknowledgeDialog(true);
-      setShowGenericAcknowledgeDialogTitle("Verify your email");
-      setShowGenericAcknowledgeDialogContent(
-        <div>
-          <Typography gutterBottom>
-            Verify your email before deploying your website. Click the verify
-            button to have a verification email send to your email. Follow the
-            link in the email to verify your email address.
-          </Typography>
-          <Button
-            variant="contained"
-            onClick={() => {
-              sendVerificationEmailToUser(user!);
-              setShowGenericAcknowledgeDialog(false);
-            }}
-          >
-            Verify Email
-          </Button>
-        </div>
-      );
-      return;
-    }
     const deployments = await getDeployments();
     const status = deployments[0]?.status.toUpperCase() ?? SUCCESSFUL;
     if (status !== SUCCESSFUL && status !== FAILED && status !== CANCELLED) {
@@ -151,20 +123,6 @@ function MyResumes() {
   const handleException = (message: string) => {
     setHasResumeActionError(true);
     setResumeActionError(message);
-  };
-
-  const sendVerificationEmailToUser = async (user: User) => {
-    try {
-      await sendEmailVerification(user);
-    } catch (e) {
-      if (e instanceof Error) {
-        if (e.message.includes(VERIFY_EMAIL_TOO_MANY_REQUESTS_ERR)) {
-          alert(
-            "Too many requests, please wait before requesting a new verification email."
-          );
-        }
-      }
-    }
   };
 
   const getLoadingTemplate = () => {

@@ -107,7 +107,7 @@
   margin-bottom: 50px;
 }
 
-.account_details_change_password.account_details_fields {
+.account_details_change_github_token.account_details_fields {
   @extend .account_details_email;
   margin-bottom: 25px;
 
@@ -117,7 +117,7 @@
     margin-bottom: 1rem;
   }
 
-  .password_reset_result_messages {
+  .github_token_update_result_messages {
     p {
       margin-top: 5px;
       font-size: 1rem;
@@ -126,7 +126,7 @@
     }
   }
 
-  .account_details_password_input_field {
+  .account_details_github_token_input_field {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: start;
