@@ -45,34 +45,7 @@ in Option 1.
 
 ## Getting Started
 
-The instructions below are not detailed/complete at the moment, I am working to write a detailed guide for setting up
-this project if you want to spin up your own instance. If you are interested in developing or running ResumeCharge
-locally please reach-out to me at [adam@adamlawson.dev](mailto:adam@adamlawson.dev).
+# Follow the instructions in https://github.com/ResumeCharge/standalone. This will deploy the entire ResumeCharge stack using Docker.
 
-
-This WebApp is the front-end of the [ResumeCharge.com](https://resumecharge.com) website. It can technically be run without
-the GeneratorService active, but no website will be created (they will show as pending). The UserService and 
-DeploymentService are critical to running the front-end, without them the user profile and resumes/deployments
-cannot be loaded.
-
-### Prerequisites
-
-* NodeJs/NPM
-* [GeneratorService](https://github.com/ResumeCharge/GeneratorService) deployed and running
-* [DeploymentService](https://github.com/ResumeCharge/DeploymentService) deployed and running
-* [UserService](https://github.com/ResumeCharge/UserService) deployed and running
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/ResumeCharge/WebApp.git
-   ```
-2. Install dependencies
-   ```sh
-   npm install
-   ```
-3. Run the web app
-   ```sh
    npm run start
    ```
