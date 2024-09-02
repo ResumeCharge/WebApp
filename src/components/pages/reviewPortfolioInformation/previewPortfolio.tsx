@@ -34,7 +34,6 @@ import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
 import { TransitionProps } from "@mui/material/transitions";
 import Slide from "@mui/material/Slide";
-import { seedRedux } from "../../../utilities/seedRedux";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -212,13 +211,9 @@ const PreviewPortfolio = () => {
       </button>
     );
   };
-  const seedStore = () => {
-    seedRedux();
-  };
 
   return (
     <div className={"preview_overlay_container"}>
-      <Button onClick={seedStore}>Seed</Button>
       <div
         className={"preview_container"}
         style={isSignUpSignInActive ? { pointerEvents: "none" } : undefined}
